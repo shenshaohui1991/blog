@@ -1,0 +1,28 @@
+---
+layout: default
+---
+{% assign post = page %}
+{% include post_tags_category.html %}
+
+<article {% if page.feature-img %}class="feature-image" {% endif %}>
+    <header style="background-image: url('{{ site.baseurl }}/{{ page.feature-img }}')">
+
+        <h1 class="title">{{ page.title }}</h1>
+        <p id="subtitletrans" class="subtitlecontainer">
+            <a class="subtitle">{{ page.date | date: "%Y年%m月%-d日" }}</a>
+            | <a class="subtitle" href="{{ site.baseurl }}/About/">SSH</a>
+            {% if post.category and post.tags %} | <a class="subtitle">{{ category_content }}</a> <a class="subtitle">{{ tags_content }}</a>{% endif %}
+        </p>
+    </header>
+    <section class="post-content">
+        {{ content }}
+    </section>
+
+</article>
+
+<!-- Disqus -->
+{% if site.theme.disqus_shortname %}
+<div class="comments">
+    {% include disqus.html %}
+</div>
+{% endif %}

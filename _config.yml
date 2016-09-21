@@ -1,0 +1,65 @@
+# SITE CONFIGURATION
+baseurl: "" # Set it to "" if use for personal site. The subpath of your site, e.g. /blog/
+url: "" # the base hostname & protocol for your site
+imageurl: "img/placeholder.jpg" #"https://unsplash.it/2600/500?random"
+
+# THEME-SPECIFIC CONFIGURATION
+theme:
+  # Meta
+  title: SSH's Blog
+  hometitle: 主页 #display on navigation menu.
+  yoursitetitle: SSH
+  description: "吃点东西，喝点东西，写点东西" # used by search engines
+  visiblewords: 300
+  # Header and footer text
+  header_text: >
+     Talk is cheap.<br/>
+     Show me the code.
+
+  header_text_feature_image: img/placeholder.jpg
+  place_holder_image: img/placeholder.jpg
+
+  # Icons
+  rss: false
+  email_address: "443939294@qq.com"
+  bitbucket: "shenshaohui1991"
+  github: "shenshaohui1991"
+
+  # Scripts
+  disqus_shortname:
+
+  # Localization strings
+  str_follow_on: "Follow on"
+  #str_rss_follow: "Follow RSS feed"
+  str_email: "Email"
+  #str_next: "Next"
+  #str_prev: "Prev"
+  str_continue_reading: "Continue Reading..."
+
+  # Colours, typography and padding
+  # Open the "_sass > base" folder, and open "_variables.scss"
+  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
+
+  # Post navigation
+  post_navigation: false
+
+# PAGINATION
+enforce_ssl: "sshfe.com"
+paginate: 5
+paginate_path: "page/:num"
+permalink: :title/
+
+# Posted in ... with ...
+sechby: 
+  category:   #in
+  tag:   #with
+
+# BUILD SETTINGS
+markdown: redcarpet
+highlighter: pygments
+sass:
+  sass_dir: _sass
+  style: :compressed
+
+gems:
+  - jekyll-paginate
