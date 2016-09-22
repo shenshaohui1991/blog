@@ -44,7 +44,7 @@ siteinfo:
   post_navigation: false
 
 # PAGINATION
-enforce_ssl: "sshfe.com"
+enforce_ssl: false
 paginate: 5
 paginate_path: "page/:num"
 permalink: :title/
