@@ -4,7 +4,7 @@ url: "" # the base hostname & protocol for your site
 imageurl: "img/placeholder.jpg" #"https://unsplash.it/2600/500?random"
 
 # THEME-SPECIFIC CONFIGURATION
-theme:
+siteinfo:
   # Meta
   title: SSH's Blog
   hometitle: 主页 #display on navigation menu.

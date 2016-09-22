@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>SSH&#39;s Blog</title>
+    <title>SSH's Blog</title>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
     <link>/</link>
     <description>吃点东西，喝点东西，写点东西</description>
-    <pubDate>Wed, 21 Sep 2016 09:01:28 +0800</pubDate>
+    <pubDate>Thu, 22 Sep 2016 08:32:53 +0800</pubDate>
     
       <item>
         <title>hello world</title>
-        <link>/blog/hello-world/</link>
-        <guid isPermaLink="true">/blog/hello-world/</guid>
+        <link>/hello-world/</link>
+        <guid isPermaLink="true">/hello-world/</guid>
         <description>&lt;h1&gt;heading 1&lt;/h1&gt;
 
 &lt;p class=&quot;intro&quot;&gt;&lt;span class=&quot;dropcap&quot;&gt;C&lt;/span&gt;urabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur.&lt;/p&gt;

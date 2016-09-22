@@ -2,8 +2,8 @@
 {% include description.html %}
 <head>
 	<meta charset="utf-8">
-	<title>{% if page.title %}{{ page.title }} |{% endif %} {{ site.theme.title }}</title>
-	<meta name="description" content="{% if post.category and post.tags %}{{ category_content }}, {{ tags_content }}, {% endif %}{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.theme.description }}{% endif %}">
+	<title>{% if page.title %}{{ page.title }} |{% endif %} {{ site.siteinfo.title }}</title>
+	<meta name="description" content="{% if post.category and post.tags %}{{ category_content }}, {{ tags_content }}, {% endif %}{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.siteinfo.description }}{% endif %}">
 	<meta http-equiv="X-UA-COMPATIBLE" content="IE=Edge,chrome=1">
 	<meta name="renderer" content="webkit|chrome">
 	<meta name="viewport" content="width=device-width,user-scalable=no">
@@ -30,14 +30,14 @@
 	<link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
 	<!-- RSS -->
-	<link rel="alternate" type="application/atom+xml" title="{{ site.theme.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+	<link rel="alternate" type="application/atom+xml" title="{{ site.siteinfo.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 
 	<!-- Font Awesome -->
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 
 	<!-- Google Fonts -->
-	{% if site.theme.google_fonts %}
-	<link href="//fonts.googleapis.com/css?family={{ site.theme.google_fonts }}" rel="stylesheet" type="text/css">
+	{% if site.siteinfo.google_fonts %}
+	<link href="//fonts.googleapis.com/css?family={{ site.siteinfo.google_fonts }}" rel="stylesheet" type="text/css">
 	{% endif %}
 
 	<script type="text/javascript">
@@ -46,7 +46,7 @@
         window.location.protocol = "https";
     </script>
 
-    {% if site.theme.cnzz_analytics %}
+    {% if site.siteinfo.cnzz_analytics %}
 	{% include cnzz_analytics.html %}
 	{% endif %}
 </head>
