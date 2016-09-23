@@ -15,9 +15,7 @@
 	<link rel="stylesheet" href="{{ "/css/main.css" | prepend: site.baseurl }}">
 	<link rel='stylesheet' id='divi-style-css'  href="{{ "/css/style.css" | prepend: site.baseurl }}" type='text/css' media='all' />
 	<link rel="stylesheet" href="{{ "/css/post.style.css" | prepend: site.baseurl }}">
-	<!-- JS -->
-	<script type='text/javascript' src="{{ "/js/jquery.js" | prepend: site.baseurl }}"></script>
-	<script type='text/javascript' src="{{ "/js/soundmanager2-nodebug-jsmin.js" | prepend: site.baseurl }}"></script>
+
 
 	<!--Favicon-->
 	<link rel="icon" href="favicon.ico" type="image/x-icon"/>
@@ -45,8 +43,4 @@
     if (enforceSSL)
         window.location.protocol = "https";
     </script>
-
-    {% if site.siteinfo.cnzz_analytics %}
-	{% include cnzz_analytics.html %}
-	{% endif %}
 </head>
