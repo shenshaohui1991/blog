@@ -1,65 +1,109 @@
-# SITE CONFIGURATION
-baseurl: "" # Set it to "" if use for personal site. The subpath of your site, e.g. /blog/
-url: "" # the base hostname & protocol for your site
-imageurl: "img/placeholder.jpg" #"https://unsplash.it/2600/500?random"
+title:            SSH
+description:      Ssh's blog
+logo:             omikron.png
 
-# THEME-SPECIFIC CONFIGURATION
-siteinfo:
-  # Meta
-  title: SSH's Blog
-  hometitle: 主页 #display on navigation menu.
-  yoursitetitle: SSH
-  description: "吃点东西，喝点东西，写点东西" # used by search engines
-  visiblewords: 300
-  # Header and footer text
-  header_text: >
-     Talk is cheap.<br/>
-     Show me the code.
+disqus_shortname: shortname
+# Assign a default image for your site's header and footer
+default_bg:       default_bg.jpg
+search:           true
+share:            true
+# Read Time is a calculator tp provide post read-time based on word count. Usage is recommended.
+readtime:         true
+# Turn on or off the fin animations in the header and footer
+triangleheader:	  true
+animated_fins:    true
+# Specify the fin color in RGB value
+fin_color:        "255,255,255"
+# Change url to your domain. Leave localhost server or blank when working locally.
+url:          http://sshfe.com
+# baseurl:           
 
-  header_text_feature_image: img/placeholder.jpg
-  place_holder_image: img/placeholder.jpg
-
-  # Icons
-  rss: false
-  email_address: "443939294@qq.com"
-  bitbucket: "shenshaohui1991"
-  github: "shenshaohui1991"
-
-  # Scripts
-  disqus_shortname:
-
-  # Localization strings
-  str_follow_on: "Follow on"
-  #str_rss_follow: "Follow RSS feed"
-  str_email: "Email"
-  #str_next: "Next"
-  #str_prev: "Prev"
-  str_continue_reading: "Continue Reading..."
-
-  # Colours, typography and padding
-  # Open the "_sass > base" folder, and open "_variables.scss"
-  google_fonts: "Source+Sans+Pro:400,700,700italic,400italic"
-
-  # Post navigation
-  post_navigation: false
-
-# PAGINATION
-enforce_ssl: false
-paginate: 5
-paginate_path: "page/:num"
-permalink: :title/
-
-# Posted in ... with ...
-sechby: 
-  category:   #in
-  tag:   #with
-
-# BUILD SETTINGS
-markdown: kramdown
-highlighter: pygments
-sass:
-  sass_dir: _sass
-  style: :compressed
-
+# Gems used
 gems:
+  - jekyll-feed
+  - jekyll-archives
   - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-gist
+  - jekyll-seo-tag
+
+# Archives configuration
+# https://github.com/jekyll/jekyll-archives/blob/master/docs/configuration.md
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: 'archive'
+  permalinks:
+    # year: '/:year/'
+    # month: '/:year/:month/'
+    # day: '/:year/:month/:day/'
+    tag: '/archive/tag/:name/'
+    category: '/archive/category/:name/'
+
+# Owner/author information
+author:
+  name:           shenshaohui
+  picture:        wukong.jpg
+  email:          443939294@qq.com
+  # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
+  description:    'Talk is cheap, Show me the code.'
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:
+  facebook:
+  github: "shenshaohui1991"
+  linkedin:
+  instagram:
+  tumblr:
+  google_plus:
+
+# Analytics and webmaster tools stuff goes here
+google_analytics:
+google_verify:
+
+# Links to include in top navigation
+# For external links add external: true
+links:
+  - title: Home
+    url: /
+    external: false
+    icon: home
+  - title: Categories
+    url: /categories
+  - title: Tags
+    url: /tags
+
+# Sitemap configuration
+# https://github.com/kinnetica/jekyll-plugins
+sitemap:
+    file: "/sitemap.xml"
+    exclude:
+        - "/atom.xml"
+        - "/feed.xml"
+        - "/feed/index.xml"
+    include_posts:
+        - "/index.html"
+
+# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone:    Asia/Shanghai
+future:      true
+markdown:    kramdown
+highlighter: rouge
+paginate:    6
+paginate_path: "/blog/:num/"
+
+# https://github.com/mojombo/jekyll/wiki/Permalinks
+collections:
+  posts:
+    output: true
+    permalink: /blog/:title
+  pages:
+    output: true
+    permalink: /:title
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6

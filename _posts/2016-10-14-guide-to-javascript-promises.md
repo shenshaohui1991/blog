@@ -1,13 +1,11 @@
 ---
 layout: post
-title: 'Promise快速指南(译)'
+title: 'Javascript Promises快速指南(译)'
 date: 2016-10-14
 author: SSH
 category: front
 tags: [js, translate]
 ---
-
-# Javascript Promises快速指南
 
 当你在写JS代码的时候，[回调函数](https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes/Using_js-ctypes/Declaring_and_Using_Callbacks#Using_Callbacks)是最让人困惑的概念之一。[Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise)是一种改善异步代码的新方法。
 
@@ -25,7 +23,7 @@ tags: [js, translate]
 
 当你安装好之后，你需要创建一个新的文件夹，并通过下列命令在这个文件夹中来安装`fetch`和`request`:
 
-```shell
+```bash
 npm init
 npm install node-fetch request --save
 ```
@@ -197,7 +195,7 @@ fetch('http://httpbin.org/get')
 const queryParameters = ['ahoy', 'hello', 'hallo'];
 
 const fetchPromises = queryParameters.map(queryParam => {
-    return fetch(`http://httpbin.org/get?${queryParam}`)
+    return fetch('http://httpbin.org/get?${queryParam}')
         .then(response => {
             // parse response body as JSON
             return response.json()
@@ -235,7 +233,7 @@ let mostRecentPromise = Promise.resolve([]); // start with an immediately resolv
 queryParameters.forEach(queryParam => {
     // chain the promise to the previous one
     mostRecentPromise = mostRecentPromise.then(requestedUrlsSoFar => {
-        return fetch(`http://httpbin.org/get?${queryParam}`)
+        return fetch('http://httpbin.org/get?${queryParam}')
             .then(response => {
                 // parse response body as JSON
                 return response.json()

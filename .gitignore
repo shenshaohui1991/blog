@@ -1,4 +1,4 @@
-# Created by .ignore support plugin (hsz.mobi)
-.idea/
-one_blog.sublime-project
-one_blog.sublime-workspace
+_site
+Gemfile.lock
+
+*.sublime*

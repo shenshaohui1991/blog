@@ -1,0 +1,14 @@
+default_author:
+  name:           shenshaohui
+  picture:        wukong.jpg
+  email:          443939294@qq.com
+  # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
+  description:    'Talk is cheap, Show me the code.'
+  # Social networking links used in footer. Update and remove as you like.
+  twitter:
+  facebook:
+  github: "shenshaohui1991"
+  linkedin:
+  instagram:
+  tumblr:
+  google_plus:
