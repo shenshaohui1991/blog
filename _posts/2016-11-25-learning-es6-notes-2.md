@@ -177,6 +177,7 @@ let {prop: q2} = null; // TypeError: cannot match against `undefined` or `null`
 ```
 
 ## Set
+
 ### Set
 ES6中引入集合（`set`）的概念，如果说之前的数组可以理解成`有序集合`，那这里说的集合就可以理解成数据结构中的无序集合。集合和数组略有区别，数组内部值有序且不唯一，而集合的特点就是其内部的值无序且值唯一
 
@@ -241,6 +242,7 @@ console.log(weakSet2.has(obj)); // false
 有了WeakSet之后，我们就可以通过代码去了解引擎中垃圾收集的运行状况
 
 ## Map
+
 ### Map
 除了set，ES6还引入了映射类型(`map`)，Map和Object很类似都是`key-value`的形式，但是，`map`对键没有限制任何键都可以，`Object`则要求键必须是字符串。和`Object`类似，`Map`也提供了增删改查等操作。
 
