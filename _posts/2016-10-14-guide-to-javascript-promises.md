@@ -4,7 +4,7 @@ title: 'Javascript Promises快速指南(译)'
 date: 2016-10-14
 author: SSH
 categories: [front]
-tags: [js, translate]
+tags: [Javascript, Translate]
 excerpt: 本文是一片关于如何让一个初学者迅速掌握Promise的文章，我也是在学习了Promise之后，无意中发现了这篇文章，发现自己对promise的理解还有很多遗漏的地方，于是就把它翻译了一遍。
 ---
 
