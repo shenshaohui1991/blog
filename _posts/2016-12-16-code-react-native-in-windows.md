@@ -1,11 +1,11 @@
 ---
 layout: post
 title: '在Windows下开发ReactNative程序'
-date: 2016-10-14
+date: 2016-12-16
 author: SSH
 categories: [front]
 tags: [Javascript, ReactNative]
-excerpt: 
+excerpt: 本文教你如何在windows上搭建ReactNative环境，步骤很简单，只要网速够快就可以啦。。
 ---
 
 ## 安装依赖
@@ -19,7 +19,7 @@ excerpt:
 ### node.js && python2
 可以通过[chocolate](https://chocolatey.org/)来安装node.js和python
 
-```shell
+```javascript
 choco install nodejs.install
 choco install python2
 ```
@@ -33,18 +33,19 @@ choco install python2
 ### 初始化ReactNative工程
 首先需要下载`react-native-cli`
 
-```shell
+```javascript
 npm install -g react-native-cli
 ```
 
 初始化过程一般比较久，大概十分钟左右，需要下载很多依赖
-```shell
+
+```javascript
 react-native init ReactNativeDemo
 ```
 
 ### 运行第一个ReactNative程序
 
-```shell
+```javascript
 react-native run-android
 ```
 
@@ -58,7 +59,7 @@ react-native run-android
 
 运行项目可能遇到的BUG：
 
-```shell
+```javascript
 SyntaxError: Strict mode does not allow function declarations in a lexically nested statement on a newly created app
 ```
 
