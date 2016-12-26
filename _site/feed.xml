@@ -1,4 +1,173 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-16T00:09:54+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>Ssh's blog</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">ES6学习笔记3</title><link href="http://localhost:4000/blog/learning-es6-notes-3" rel="alternate" type="text/html" title="ES6学习笔记3" /><published>2016-12-11T00:00:00+00:00</published><updated>2016-12-11T00:00:00+00:00</updated><id>http://localhost:4000/blog/learning-es6-notes-3</id><content type="html" xml:base="http://localhost:4000/blog/learning-es6-notes-3">&lt;h2 id=&quot;class&quot;&gt;Class&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2016-12-26T14:49:19+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>Ssh's blog</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">Javascript定时器如何工作（译）</title><link href="http://localhost:4000/blog/how-javascript-timers-work" rel="alternate" type="text/html" title="Javascript定时器如何工作（译）" /><published>2016-12-26T00:00:00+00:00</published><updated>2016-12-26T00:00:00+00:00</updated><id>http://localhost:4000/blog/how-javascript-timers-work</id><content type="html" xml:base="http://localhost:4000/blog/how-javascript-timers-work">&lt;p&gt;从原理上了解JS定时器是如何工作是一件很重要的事。因为JS是单线程的，所以大多数时候定时器都会表现的不直观。让我们来看看我们所能看到的三个定时器函数，用他们来构建和操作定时器。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;var id = setTimeout(fn, delay);&lt;/code&gt;-初始化一个单独的定时器，定时器会在指定的延迟之后执行特定的函数，同时这个函数会返回一个唯一的ID，后面可以通过这个ID清除定时器。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;var id = setInterval(fn, delay);&lt;/code&gt;-和&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;很类似，但是&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;会重复执行回调函数直至被取消。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;clearInterval(id); clearTimeout(id);&lt;/code&gt;-接受一个定时器ID同时停止执行该定时器的回调函数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;为了理解定时器在内部是如何工作的，这里有一个重要的概念来解释一下：定时器的延迟时间并不是一定的。由于浏览器中所有Javascript都是在单线程中执行的，因此异步事件（类似鼠标点击或者定时器）至于在执行时才会出现。下图是最好的演示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p7.yx-s.com/d/inn/74622874/Timers.png&quot; alt=&quot;定时器&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这张图中有很多重要的信息，当你完全理解之后你将对JS如何执行异步操作有更深入的理解。这是一张一维的图片：垂直方向是以毫秒为单位的时间。蓝色盒子代表有JS代码正在被执行。举例来说，第一个JS代码执行大约18毫秒，鼠标点击事件大约执行了11毫秒等等。&lt;/p&gt;
+
+&lt;p&gt;由于Javascript一次只能执行一段代码（因为单线程的缘故），每个代码块都会阻塞其他异步事件。这意味着异步事件（鼠标点击、定时器执行、XMLHttpRequest完成）出现后不会马上就执行而是先加入到队列中(每个浏览器如何实现这种排队方式是不同，所以我们可以认为上图是一个简化版的排队方式)。&lt;/p&gt;
+
+&lt;p&gt;下面开始解释上面的图片，当第一段代码运行的时候，有两个定时器启动了：一个10ms的&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;和一个10ms的&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;。定时器何时被执行完成由我们什么时候完成第一个代码块决定。但是，请注意，它不会马上执行（因为线程的缘故，所以他不能执行）。在下一个空闲时间，这些在队列中延后的函数将被顺序执行。&lt;/p&gt;
+
+&lt;p&gt;另外，在第一个Javascript代码块执行时，我们看到有一个鼠标点击事件出现。与异步事件相关联的JS回调不会马上执行（我们永远不知道用户何时可能执行一个动作，所以我们认为它是异步的），就像初始的定时器，他将排队等待执行。&lt;/p&gt;
+
+&lt;p&gt;当第一块JS执行完成之后，浏览器马上就会问：还有谁在等待被执行？在这个例子中，有一个鼠标点击事件和一个定时器的回调在等待执行。定时器将会等待下一个可执行的时间去执行。&lt;/p&gt;
+
+&lt;p&gt;注意，当鼠标点击事件执行的时候，第一个间隔回调也开始执行了。和定时器一样，他的处理函数将会排队等待后续的执行。但是，请注意，当间隔定时器再次被触发，这次处理函数将被丢弃。如果在你使用interval时，有一大段代码要执行，结果将会是你所有的回调都会没有间隔的在其他代码执行后连续执行。相反，浏览器更倾向于等待至没有其他处理函数排队。&lt;/p&gt;
+
+&lt;p&gt;事实上，我们可以看到当interval正在执行中，第三个interval回调被触发了。这告诉我们一个很重要的事实：&lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;并不关注当前什么正在执行，他将不加区别的插入到队列中，即使这意味着回调之间的时间将被牺牲掉。&lt;/p&gt;
+
+&lt;p&gt;最后，在第二个间隔回调完成执行后，我们可以看到没有任何东西留给JavaScript引擎执行。这意味着浏览器现在等待一个新的异步事件发生。我们得到这个在50ms标记时间间隔再次发生。 这一次，没有阻塞其执行，所以它立即引发。&lt;/p&gt;
+
+&lt;p&gt;让我们来看一个例子来更好的说明&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;之间的区别。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;　&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* Some long block of code… */&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callee&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;setInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* Some long block of code… */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这两段代码看起来似乎是相等的，但是他们并不是这样的。&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;将回调执行完成后至少10ms执行，而&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;将尝试每隔10ms执行一次，不考虑最后一次回调什么时候执行。&lt;/p&gt;
+
+&lt;p&gt;我们在这里学到了很多，让我们回顾一下：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;JS引擎只有一个线程，将会强制异步事件排队执行&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;在执行异步代码时有根本的区别&lt;/li&gt;
+  &lt;li&gt;如果定时器被阻止立即执行，它将被延迟，直到下一个可能的执行点（这将长于所需的延迟）&lt;/li&gt;
+  &lt;li&gt;如果&lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;的回调执行时间长于指定的延迟，&lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;或许将无间隔的一个接一个执行&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;所有这些都是非常重要的知识。 了解JavaScript引擎的工作原理，尤其是大量发生的异步事件，为构建高级应用程序代码提供了一个良好的基础。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;原文链接:&lt;a href=&quot;http://ejohn.org/blog/how-javascript-timers-work/&quot;&gt;How JavaScript Timers Work&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;原文作者:&lt;a href=&quot;http://ejohn.org/&quot;&gt;John Resig&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;译文地址:&lt;a href=&quot;http://www.sshfe.com&quot;&gt;sshfe.com&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="Translate" /><summary type="html">最近公司开始组织分享会，吓得我赶紧准备准备，于是，我就找找资料终于决定把第一次的题目定为定时器那些事，本文就是在搜索资料中找到的一片有意思的文章，本文将告诉你JS定时器的在浏览器中的工作原理</summary></entry><entry><title type="html">在Windows下开发ReactNative程序</title><link href="http://localhost:4000/blog/code-react-native-in-windows" rel="alternate" type="text/html" title="在Windows下开发ReactNative程序" /><published>2016-12-16T00:00:00+00:00</published><updated>2016-12-16T00:00:00+00:00</updated><id>http://localhost:4000/blog/code-react-native-in-windows</id><content type="html" xml:base="http://localhost:4000/blog/code-react-native-in-windows">&lt;h2 id=&quot;section&quot;&gt;安装依赖&lt;/h2&gt;
+&lt;p&gt;需要的依赖:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;node.js&lt;/li&gt;
+  &lt;li&gt;python2&lt;/li&gt;
+  &lt;li&gt;ReactNative&lt;/li&gt;
+  &lt;li&gt;JDK&lt;/li&gt;
+  &lt;li&gt;Android SDK&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;nodejs--python2&quot;&gt;node.js &amp;amp;&amp;amp; python2&lt;/h3&gt;
+&lt;p&gt;可以通过&lt;a href=&quot;https://chocolatey.org/&quot;&gt;chocolate&lt;/a&gt;来安装node.js和python&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;choco&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;choco&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;python2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;jdk&quot;&gt;安装JDK&lt;/h3&gt;
+&lt;p&gt;下载一个JDK，直接下一步下一步，安装完成之后，在系统变量中添加&lt;code class=&quot;highlighter-rouge&quot;&gt;JAVA_HOME&lt;/code&gt;，具体步骤可以参考&lt;a href=&quot;http://jingyan.baidu.com/article/6dad5075d1dc40a123e36ea3.html&quot;&gt;安装说明&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;android-sdk&quot;&gt;安装Android SDK&lt;/h3&gt;
+&lt;p&gt;提供一个带AndroidSDK的Android Studio的&lt;a href=&quot;https://dl.google.com/dl/android/studio/install/2.2.2.0/android-studio-bundle-145.3360264-windows.exe&quot;&gt;下载地址&lt;/a&gt;，安装过程也是下一步下一步，需要注意的是你需要下载Android6.0版本&lt;/p&gt;
+
+&lt;h3 id=&quot;reactnative&quot;&gt;初始化ReactNative工程&lt;/h3&gt;
+&lt;p&gt;首先需要下载&lt;code class=&quot;highlighter-rouge&quot;&gt;react-native-cli&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cli&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;初始化过程一般比较久，大概十分钟左右，需要下载很多依赖&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;reactnative-1&quot;&gt;运行第一个ReactNative程序&lt;/h3&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;android&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;可以通过访问&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:8081/index.android.bundle?platform=android&lt;/code&gt;检查是否启动成功或者直接在手机上查看程序&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意&lt;/em&gt;&lt;/strong&gt;:对于小米手机需要做一下操作&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;打开开发者模式&lt;/li&gt;
+  &lt;li&gt;打开USB调试&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;关闭MIUI优化&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;em&gt;允许悬浮窗&lt;/em&gt;&lt;/strong&gt;，禁用可能导致出现长时间白屏&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;运行项目可能遇到的BUG：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;SyntaxError&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Strict&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;does&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;allow&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;declarations&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lexically&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nested&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newly&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;created&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;这个问题具体原因可以参考&lt;a href=&quot;https://github.com/facebook/react-native/issues/11389&quot;&gt;Issue&lt;/a&gt;，提供一个简单的修复方法，找到项目目录下&lt;code class=&quot;highlighter-rouge&quot;&gt;\node_modules\react-native\Libraries\Core\InitializeCore.js&lt;/code&gt;的112行修改函数的定义方式，然后执行&lt;code class=&quot;highlighter-rouge&quot;&gt;npm start --reset-cache&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isFatal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;hello-world&quot;&gt;Hello World&lt;/h3&gt;
+
+&lt;p&gt;修改&lt;code class=&quot;highlighter-rouge&quot;&gt;index.android.js&lt;/code&gt;文件，ReactNative全面支持ES6的语法，在改的时候完全不需要担心是否支持的问题&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;AppRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react-native'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;World&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/View&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;justifyContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;alignItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#F5FCFF'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;textAlign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;AppRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ReactNativeDemo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="ReactNative" /><summary type="html">本文教你如何在windows上搭建ReactNative环境，步骤很简单，只要网速够快就可以啦。。</summary></entry><entry><title type="html">ES6学习笔记3</title><link href="http://localhost:4000/blog/learning-es6-notes-3" rel="alternate" type="text/html" title="ES6学习笔记3" /><published>2016-12-11T00:00:00+00:00</published><updated>2016-12-11T00:00:00+00:00</updated><id>http://localhost:4000/blog/learning-es6-notes-3</id><content type="html" xml:base="http://localhost:4000/blog/learning-es6-notes-3">&lt;h2 id=&quot;class&quot;&gt;Class&lt;/h2&gt;
 &lt;p&gt;在class提出之前其实已经有了一套继承的方式，那就是利用原型来类和继承&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -853,114 +1022,7 @@
 &lt;span class=&quot;c1&quot;&gt;// return LexicallyBound object，在箭头函数中，使用call不能改变this的指向&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({});&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="ES6" /><summary type="html">之前校招的时候因为面试需要看了一阵子ES6，到了实际项目中发现学了的ES6没啥用武之地，前段时间看了下NodeJS早就开始支持原生ES6语法了,刚好情封大大在推荐《实战ES2015》这本书，于是就买了一本，后来才发现自己已经要落伍了，该学习学习啦。笔记大概会参照《实战ES2015》的目录总结，同时也会参考ES6 Katas里面的内容。</summary></entry><entry><title type="html">在Windows下开发ReactNative程序</title><link href="http://localhost:4000/blog/code-react-native-in-windows" rel="alternate" type="text/html" title="在Windows下开发ReactNative程序" /><published>2016-10-14T00:00:00+00:00</published><updated>2016-10-14T00:00:00+00:00</updated><id>http://localhost:4000/blog/code-react-native-in-windows</id><content type="html" xml:base="http://localhost:4000/blog/code-react-native-in-windows">&lt;h2 id=&quot;section&quot;&gt;安装依赖&lt;/h2&gt;
-&lt;p&gt;需要的依赖:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;node.js&lt;/li&gt;
-  &lt;li&gt;python2&lt;/li&gt;
-  &lt;li&gt;ReactNative&lt;/li&gt;
-  &lt;li&gt;JDK&lt;/li&gt;
-  &lt;li&gt;Android SDK&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;nodejs--python2&quot;&gt;node.js &amp;amp;&amp;amp; python2&lt;/h3&gt;
-&lt;p&gt;可以通过&lt;a href=&quot;https://chocolatey.org/&quot;&gt;chocolate&lt;/a&gt;来安装node.js和python&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;choco&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;choco&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;python2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;jdk&quot;&gt;安装JDK&lt;/h3&gt;
-&lt;p&gt;下载一个JDK，直接下一步下一步，安装完成之后，在系统变量中添加&lt;code class=&quot;highlighter-rouge&quot;&gt;JAVA_HOME&lt;/code&gt;，具体步骤可以参考&lt;a href=&quot;http://jingyan.baidu.com/article/6dad5075d1dc40a123e36ea3.html&quot;&gt;安装说明&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;android-sdk&quot;&gt;安装Android SDK&lt;/h3&gt;
-&lt;p&gt;提供一个带AndroidSDK的Android Studio的&lt;a href=&quot;https://dl.google.com/dl/android/studio/install/2.2.2.0/android-studio-bundle-145.3360264-windows.exe&quot;&gt;下载地址&lt;/a&gt;，安装过程也是下一步下一步，需要注意的是你需要下载Android6.0版本&lt;/p&gt;
-
-&lt;h3 id=&quot;reactnative&quot;&gt;初始化ReactNative工程&lt;/h3&gt;
-&lt;p&gt;首先需要下载&lt;code class=&quot;highlighter-rouge&quot;&gt;react-native-cli&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cli&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;初始化过程一般比较久，大概十分钟左右，需要下载很多依赖&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;reactnative-1&quot;&gt;运行第一个ReactNative程序&lt;/h3&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;android&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;可以通过访问&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:8081/index.android.bundle?platform=android&lt;/code&gt;检查是否启动成功或者直接在手机上查看程序&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意&lt;/em&gt;&lt;/strong&gt;:对于小米手机需要做一下操作&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;打开开发者模式&lt;/li&gt;
-  &lt;li&gt;打开USB调试&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;em&gt;关闭MIUI优化&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;允许悬浮窗&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;运行项目可能遇到的BUG：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;SyntaxError&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Strict&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;does&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;allow&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;declarations&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lexically&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nested&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newly&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;created&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这个问题具体原因可以参考&lt;a href=&quot;https://github.com/facebook/react-native/issues/11389&quot;&gt;Issue&lt;/a&gt;，提供一个简单的修复方法，找到项目目录下&lt;code class=&quot;highlighter-rouge&quot;&gt;\node_modules\react-native\Libraries\Core\InitializeCore.js&lt;/code&gt;的112行修改函数的定义方式，然后执行&lt;code class=&quot;highlighter-rouge&quot;&gt;npm start --reset-cache&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isFatal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;hello-world&quot;&gt;Hello World&lt;/h3&gt;
-
-&lt;p&gt;修改&lt;code class=&quot;highlighter-rouge&quot;&gt;index.android.js&lt;/code&gt;文件，ReactNative全面支持ES6的语法，在改的时候完全不需要担心是否支持的问题&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;AppRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react-native'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;World&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/View&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;justifyContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;alignItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#F5FCFF'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-  &lt;span class=&quot;na&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;textAlign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;AppRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ReactNativeDemo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="ReactNative" /><summary type="html">本文教你如何在windows上搭建ReactNative环境</summary></entry><entry><title type="html">Javascript Promises快速指南(译)</title><link href="http://localhost:4000/blog/guide-to-javascript-promises" rel="alternate" type="text/html" title="Javascript Promises快速指南(译)" /><published>2016-10-14T00:00:00+00:00</published><updated>2016-10-14T00:00:00+00:00</updated><id>http://localhost:4000/blog/guide-to-javascript-promises</id><content type="html" xml:base="http://localhost:4000/blog/guide-to-javascript-promises">&lt;p&gt;当你在写JS代码的时候，&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes/Using_js-ctypes/Declaring_and_Using_Callbacks#Using_Callbacks&quot;&gt;回调函数&lt;/a&gt;是最让人困惑的概念之一。&lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&quot;&gt;Promise&lt;/a&gt;是一种改善异步代码的新方法。&lt;/p&gt;
+&lt;/div&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="ES6" /><summary type="html">之前校招的时候因为面试需要看了一阵子ES6，到了实际项目中发现学了的ES6没啥用武之地，前段时间看了下NodeJS早就开始支持原生ES6语法了,刚好情封大大在推荐《实战ES2015》这本书，于是就买了一本，后来才发现自己已经要落伍了，该学习学习啦。笔记大概会参照《实战ES2015》的目录总结，同时也会参考ES6 Katas里面的内容。</summary></entry><entry><title type="html">Javascript Promises快速指南(译)</title><link href="http://localhost:4000/blog/guide-to-javascript-promises" rel="alternate" type="text/html" title="Javascript Promises快速指南(译)" /><published>2016-10-14T00:00:00+00:00</published><updated>2016-10-14T00:00:00+00:00</updated><id>http://localhost:4000/blog/guide-to-javascript-promises</id><content type="html" xml:base="http://localhost:4000/blog/guide-to-javascript-promises">&lt;p&gt;当你在写JS代码的时候，&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes/Using_js-ctypes/Declaring_and_Using_Callbacks#Using_Callbacks&quot;&gt;回调函数&lt;/a&gt;是最让人困惑的概念之一。&lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&quot;&gt;Promise&lt;/a&gt;是一种改善异步代码的新方法。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://www.twilio.com/blog/wp-content/uploads/2016/09/31orCejQRkSvmchYeZC2GKswNtst-d_xEoSPoP3X-bAm9RRe8hxz59vVZrrRm78VvJgVbuUo5R7dAikR2gY1rxtqQ14yMJP8K4CS3Siiir_wRpB6IYgoWGlpokE51vV4eYAI2lpP-1.png&quot; alt=&quot;回调地狱&quot; /&gt;&lt;/p&gt;
 

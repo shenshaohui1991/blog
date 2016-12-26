@@ -10,6 +10,7 @@ excerpt: 本文教你如何在windows上搭建ReactNative环境，步骤很简�
 
 ## 安装依赖
 需要的依赖:
+
 + node.js
 + python2
 + ReactNative
@@ -55,7 +56,7 @@ react-native run-android
 + 打开开发者模式
 + 打开USB调试
 + ***关闭MIUI优化***
-+ 允许悬浮窗
++ ***允许悬浮窗***，禁用可能导致出现长时间白屏
 
 运行项目可能遇到的BUG：
 

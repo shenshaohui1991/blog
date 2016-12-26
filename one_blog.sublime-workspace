@@ -8,12 +8,12 @@
 	"buffers":
 	[
 		{
-			"file": "_posts/2016-11-20-es6-xue-xi-bi-ji-1.md",
+			"file": "/D/code/ReactNativeDemo/index.android.js",
 			"settings":
 			{
-				"buffer_size": 4180,
+				"buffer_size": 1320,
 				"encoding": "UTF-8",
-				"line_ending": "Windows"
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -24,7 +24,7 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 400.0,
+		"height": 148.0,
 		"last_filter": "install",
 		"selected_items":
 		[
@@ -33,7 +33,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 424.0
 	},
 	"console":
 	{
@@ -53,14 +53,26 @@
 	},
 	"expanded_folders":
 	[
-		"/D/code/blog",
-		"/D/code/blog/_posts"
+		"/D/code/blog"
 	],
 	"file_history":
 	[
-		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/Markdown (Standard).sublime-settings",
-		"/D/code/blog/_posts/2016-09-24-yi-dong-duan-de-na-xie-keng.md",
+		"/D/code/blog/_posts/2016-12-16-code-react-native-in-windows.md",
 		"/D/code/blog/_posts/2016-10-14-guide-to-javascript-promises.md",
+		"/D/code/blog/_posts/2016-11-20-learning-es6-notes-1.md",
+		"/D/code/blog/_posts/2016-11-25-learning-es6-notes-2.md",
+		"/D/code/blog/_posts/2016-12-11-learning-es6-notes-3.md",
+		"/C/Users/Administrator/Desktop/virtual.csv",
+		"/C/Users/Administrator/Desktop/simple.csv",
+		"/C/Users/Administrator/Desktop/city.json",
+		"/D/code/front_end_exercise/BaiduMapAPI/shanghai_gps.csv",
+		"/D/code/front_end_exercise/BaiduMapAPI/beijing.csv",
+		"/C/Users/Administrator/Desktop/层级关系.csv",
+		"/D/code/blog/_posts/2016-09-24-yi-dong-duan-de-na-xie-keng.md",
+		"/C/Users/Administrator/Desktop/beijing.csv",
+		"/C/Users/Administrator/Desktop/shanghai_gps.csv",
+		"/C/Users/Administrator/Desktop/detail_1.csv",
+		"/C/Users/Administrator/AppData/Roaming/Sublime Text 3/Packages/MarkdownEditing/Markdown (Standard).sublime-settings",
 		"/D/code/blog/_config.yml",
 		"/C/Users/Administrator/Desktop/hosts.bat",
 		"/D/code/blog/blog/tags/translate.md",
@@ -88,7 +100,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
@@ -102,6 +114,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"total",
 			"confi",
 			"down",
 			"downcase",
@@ -128,27 +141,29 @@
 			[
 				{
 					"buffer": 0,
-					"file": "_posts/2016-11-20-es6-xue-xi-bi-ji-1.md",
+					"file": "/D/code/ReactNativeDemo/index.android.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4180,
+						"buffer_size": 1320,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3963,
-								3963
+								992,
+								992
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2347.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -234,7 +249,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 251.0,
+	"side_bar_width": 322.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
