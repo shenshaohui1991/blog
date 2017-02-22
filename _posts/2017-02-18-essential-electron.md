@@ -169,6 +169,6 @@ electron应用类似于Node应用，通过`package.json`文件来定义主线程
 感觉本文比较适合作为electron入门的PPT，内容真的很简洁，读完之后大致了解了怎么开发Electron，但是还是要实际写一写体会一下具体流程。
 
 > - 原文链接:[Essential Electron](http://jlord.us/essential-electron/)
-> - 译文地址:[sshfe.com](http://www.sshfe.com)
+> - 译文地址:[ssh.today](http://ssh.today)
 > - 译文作者:[shenshaohui1991](https://github.com/shenshaohui1991)
 > - 分享PPT:[ppt](https://ppt.baomitu.com/p/9ed9fea8)
