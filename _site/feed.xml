@@ -1,4 +1,206 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-02T14:32:26+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>Ssh's blog</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">Javascript定时器那些事儿</title><link href="http://localhost:4000/blog/something-about-js-timer" rel="alternate" type="text/html" title="Javascript定时器那些事儿" /><published>2017-01-02T00:00:00+00:00</published><updated>2017-01-02T00:00:00+00:00</updated><id>http://localhost:4000/blog/something-about-js-timer</id><content type="html" xml:base="http://localhost:4000/blog/something-about-js-timer">&lt;h2 id=&quot;section&quot;&gt;一、什么是定时器&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-22T00:10:34+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>Ssh's blog</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">Electron简介（译）</title><link href="http://localhost:4000/blog/essential-electron" rel="alternate" type="text/html" title="Electron简介（译）" /><published>2017-02-18T00:00:00+00:00</published><updated>2017-02-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/essential-electron</id><content type="html" xml:base="http://localhost:4000/blog/essential-electron">&lt;h2 id=&quot;electron&quot;&gt;一、什么是Electron?&lt;/h2&gt;
+
+&lt;p&gt;Electron是一个让你通过JavaScript、HTML、CSS就可以编写桌面应用的库。这些应用可以打包运行在Mac、Windows、Linux电脑上，同时也可以放到Mac和Windows的App Store中。&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;定义：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;JavaScript,HTML,CSS&lt;/strong&gt; 都是Web开发语言，这意味着他们是构建网站和浏览器的片段，它知道如何把代码转换成你能看到的虚拟画面。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;electron是一个库&lt;/strong&gt; 你不需要重复编写代码，你只需要利用Electron来构建你的应用即可。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/apps&quot;&gt;Apps built on Electron&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/#get-started&quot;&gt;Electron API Demos&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;二、有什么优点？&lt;/h2&gt;
+
+&lt;p&gt;通常来说，运行在不同操作系统的桌面应用应该用对应的原生语言来编写，这意味着在不同的操作系统上运行需要不同的团队编写不同的语言。Electron可以让你通过web语言写一次APP。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;定义：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;原生语言（操作系统）&lt;/strong&gt; 下列是所有操作系统最多使用的原生语言：Mac, Objective C; Linux, C; Windows, C++。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;三、它是怎么运行的呢？&lt;/h2&gt;
+
+&lt;p&gt;Electron融合了Chromium、Node.js以及一些操作系统的API，例如打开窗口、通知消息、桌面ICON等等。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p8.yx-s.com/d/inn/7dc574f9/components.png&quot; alt=&quot;Electron&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;定义：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;API&lt;/strong&gt; 应用接口为你提供一批可以操作这个库的函数&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Chromium&lt;/strong&gt; 由谷歌创建的chrome浏览器的开源库&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Node.js&lt;/strong&gt; 一个用js写服务端代码的工具，同时可以操作文件系统和网络。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-6&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nodejs.org&quot;&gt;Node.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://chromium.org&quot;&gt;Chromium&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/blog/2016/08/08/electron-internals-using-node-as-a-library&quot;&gt;Eelctron blog post&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/docs/tutorial/electron-versioning/&quot;&gt;Electron versioning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-7&quot;&gt;四、开发起来是啥感觉？&lt;/h2&gt;
+
+&lt;p&gt;开发Electron时你可以在页面中直接使用Node.js的语法，同时不需要考虑任何兼容性的问题，你只需要考虑最新版的Chrome是否支持就可以啦。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-8&quot;&gt;定义：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;使用Node&lt;/strong&gt; 这不是全部！ 除了完整的Node API之外，你可以使用已经编写和托管在npm的超过300,000个模块，Node的包管理器。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;一个浏览器&lt;/strong&gt; 并非所有的浏览器都是一样的，网页设计师和开发人员往往需要额外的努力，使每个网站看起来一模一样。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;最新的Chrome&lt;/strong&gt; 使用超过90%的ES2015语法，或者最新的功能CSS变量&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-9&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://caniuse.com/#home&quot;&gt;Can I Use?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.chromium.org&quot;&gt;Updates to Chrome&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care?hl=en&quot;&gt;CSS Variables&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-10&quot;&gt;五、前置条件&lt;/h2&gt;
+
+&lt;p&gt;开发Electron你需要：1、了解JS、CSS、HTML 2、安装Node.js&lt;/p&gt;
+
+&lt;h4 id=&quot;section-11&quot;&gt;定义：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;现实一点&lt;/strong&gt; 学习做网站或者写Node并不是一夜之间的事情，但是希望下面的链接可以帮助到你。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-12&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://nodejs.org&quot;&gt;Install Node&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://nodeschool.io&quot;&gt;NodeSchool Tutorials&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jsforcats.com&quot;&gt;JS for Cats&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://learn.shayhowe.com/html-css&quot;&gt;Learn to Code HTML &amp;amp; CSS&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://css-tricks.com&quot;&gt;CSS Tricks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care?hl=en&quot;&gt;Mozilla Developer Network&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-13&quot;&gt;六、2种进程&lt;/h2&gt;
+
+&lt;p&gt;Electron有两种类型的进程：主进程和渲染进程，Electron中有很多模块可以单独运行于其中一个或两个进程中。主进程更多的是运行在后台，而渲染进程则是你应用中的每一个窗口。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-14&quot;&gt;定义：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;模块&lt;/strong&gt; Electron的接口是根据他的功能划分的，举个例子,&lt;code class=&quot;highlighter-rouge&quot;&gt;dialog&lt;/code&gt;模块拥有所有原生窗口的APIs，类似打开文件、保存文件、弹窗。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-15&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/docs/api/&quot;&gt;Electron APIs List&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-16&quot;&gt;七、主进程&lt;/h2&gt;
+
+&lt;p&gt;主线程是每一个Electron应用的入口，一般命名成&lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt;。它管理着整个应用的生命周期，从开始到结束。同时，他也可以调用系统原生的元素和在应用中创建新的渲染进程。打开窗口或者其他原生系统操作都是资源密集型的操作，为了不打断渲染进程，所以这些操作都在主线程完成。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p9.yx-s.com/d/inn/72c3d836/main.png&quot; alt=&quot;Main Process&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-17&quot;&gt;八、渲染进程&lt;/h2&gt;
+
+&lt;p&gt;渲染进程是你应用中的浏览器窗口。和主线程不同，渲染进程是独立的且可以同时存在多个。渲染进程也可以被隐藏。一般来说会命名成&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;。他们就是普通的HTML页面，但是在electron中你还可以使用所有Node.js的接口。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p9.yx-s.com/d/inn/20df86fe/renderer.png&quot; alt=&quot;Renderer Process&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-18&quot;&gt;九、怎么理解这两种进程呢？&lt;/h2&gt;
+
+&lt;p&gt;Chrome浏览器中的每一个Tab都类似于一个独立渲染进程。如果拟关闭了所有的Tab，Chrome依然存在，就像主进程一样，你还可以继续打开新窗口或者退出应用。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p7.yx-s.com/d/inn/35e058ac/like-this.png&quot; alt=&quot;how&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-19&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/docs/tutorial/quick-start/#differences-between-main-process-and-renderer-process&quot;&gt;主进程和渲染进程之间的区别&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-20&quot;&gt;十、保持通信&lt;/h2&gt;
+
+&lt;p&gt;因为主进程和渲染进程都需要响应不同的任务，所以他们需要保持联系。我们可以使用IPC在主线程和渲染进程中发送消息。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p9.yx-s.com/d/inn/e53988be/ipc.png&quot; alt=&quot;IPC&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-21&quot;&gt;定义：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;IPC&lt;/strong&gt; 每一个主进程和渲染进程都有一个&lt;code class=&quot;highlighter-rouge&quot;&gt;IPC&lt;/code&gt;模块可以使用。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-22&quot;&gt;十一、总结&lt;/h2&gt;
+
+&lt;p&gt;electron应用类似于Node应用，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;文件来定义主线程是通过那个文件启动。然后主线程创建渲染线程并通过&lt;code class=&quot;highlighter-rouge&quot;&gt;IPC&lt;/code&gt;在两者之间传递消息。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://p9.yx-s.com/d/inn/07a4087b/app-files.png&quot; alt=&quot;app-files&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section-23&quot;&gt;十二、快速入门&lt;/h2&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Electron Quick Start&lt;/code&gt;这个工程仅仅包含了&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;，你已经学到这里了，是时候试一试身手啦。此外，你可以&lt;code class=&quot;highlighter-rouge&quot;&gt;check out&lt;/code&gt;下面的模版作为你应用的框架。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-24&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/electron/electron-quick-start&quot;&gt;Electron Quick Start&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/community#boilerplates&quot;&gt;Awesome Electron:Boilerplates&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-25&quot;&gt;十三、打包&lt;/h2&gt;
+
+&lt;p&gt;当你的应用开发完成之后，你可以利用&lt;code class=&quot;highlighter-rouge&quot;&gt;electron-packager&lt;/code&gt;来打包。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-26&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://github.com/electron-userland/electron-packager&quot;&gt;electron-packager&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/electron/electron-api-demos/blob/master/package.json#L15-L18&quot;&gt;Electron API Demos打包命令&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/docs/tutorial/mac-app-store-submission-guide/&quot;&gt;Mac应用商店Electron指南&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/docs/tutorial/windows-store-guide/&quot;&gt;Windows应用商店Electron指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-27&quot;&gt;十四、其他资源&lt;/h2&gt;
+
+&lt;p&gt;现在跟你说这些概念可能还有一些远，但是这里还有别的资源。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-28&quot;&gt;资源：&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/docs/&quot;&gt;Electron文档&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/community/&quot;&gt;Awesome Electron&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/spectron/&quot;&gt;Spectron&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://electron.atom.io/devtron/&quot;&gt;Devtron&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-29&quot;&gt;十五、读后感&lt;/h2&gt;
+
+&lt;p&gt;感觉本文比较适合作为electron入门的PPT，内容真的很简洁，读完之后大致了解了怎么开发Electron，但是还是要实际写一写体会一下具体流程。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;原文链接:&lt;a href=&quot;http://jlord.us/essential-electron/&quot;&gt;Essential Electron&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;译文地址:&lt;a href=&quot;http://www.sshfe.com&quot;&gt;sshfe.com&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;分享PPT:&lt;a href=&quot;https://ppt.baomitu.com/p/9ed9fea8&quot;&gt;ppt&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="Electron" /><category term="Translate" /><summary type="html">最近想做一个上传图片的桌面应用，于是就找了一下Electron相关的资料。但是，electron相关的文章太少了，千辛万苦终于找到了一篇，在这里就翻译一下它，作为学习Electron的第一步。</summary></entry><entry><title type="html">Javascript定时器那些事儿</title><link href="http://localhost:4000/blog/something-about-js-timer" rel="alternate" type="text/html" title="Javascript定时器那些事儿" /><published>2017-01-02T00:00:00+00:00</published><updated>2017-01-02T00:00:00+00:00</updated><id>http://localhost:4000/blog/something-about-js-timer</id><content type="html" xml:base="http://localhost:4000/blog/something-about-js-timer">&lt;h2 id=&quot;section&quot;&gt;一、什么是定时器&lt;/h2&gt;
 
 &lt;p&gt;JS提供了一些原生方法来实现延时去执行某一段代码，下面来简单介绍一下&lt;/p&gt;
 
