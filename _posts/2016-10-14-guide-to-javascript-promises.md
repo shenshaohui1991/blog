@@ -291,4 +291,4 @@ readFileWithPromise('/etc/hosts').then(content => {
 > - 原文链接:[A quick guide to JavaScript Promises](https://www.twilio.com/blog/2016/10/guide-to-javascript-promises.html)
 > - 原文作者:[dkundel](https://github.com/dkundel)
 > - 译文作者:[shenshaohui1991](https://github.com/shenshaohui1991)
-> - 译文地址:[sshfe.com](http://www.sshfe.com)
+> - 译文地址:[ssh.today](http://ssh.today)

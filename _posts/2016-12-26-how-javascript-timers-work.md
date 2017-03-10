@@ -61,4 +61,4 @@ setInterval(function () {
 > - 原文链接:[How JavaScript Timers Work](http://ejohn.org/blog/how-javascript-timers-work/)
 > - 原文作者:[John Resig](http://ejohn.org/)
 > - 译文作者:[shenshaohui1991](https://github.com/shenshaohui1991)
-> - 译文地址:[sshfe.com](http://www.sshfe.com)
+> - 译文地址:[ssh.today](http://ssh.today)
