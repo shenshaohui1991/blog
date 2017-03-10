@@ -6,9 +6,6 @@
 
 + [在Windows下开发ReactNative程序](http://ssh.today/blog/code-react-native-in-windows)
 + [Javascript定时器那些事儿](http://ssh.today/blog/something-about-js-timer)
-
-### ES6
-
 + [ES6学习笔记1](http://ssh.today/blog/learning-es6-notes-1)
 + [ES6学习笔记2](http://ssh.today/blog/learning-es6-notes-2)
 + [ES6学习笔记3](http://ssh.today/blog/learning-es6-notes-3)
