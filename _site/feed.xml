@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-22T00:10:34+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>Ssh's blog</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">Electron简介（译）</title><link href="http://localhost:4000/blog/essential-electron" rel="alternate" type="text/html" title="Electron简介（译）" /><published>2017-02-18T00:00:00+00:00</published><updated>2017-02-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/essential-electron</id><content type="html" xml:base="http://localhost:4000/blog/essential-electron">&lt;h2 id=&quot;electron&quot;&gt;一、什么是Electron?&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-18T15:24:22+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>SSH的个人博客</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">项目填坑记-cookie</title><link href="http://localhost:4000/blog/wtf-cookie" rel="alternate" type="text/html" title="项目填坑记-cookie" /><published>2017-03-18T00:00:00+00:00</published><updated>2017-03-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/wtf-cookie</id><content type="html" xml:base="http://localhost:4000/blog/wtf-cookie">&lt;p&gt;前段时间开发了一个用户登录的模块，需求很简单，用户输入手机号和验证码，我们就会返回给用户一套身份信息并保存在cookie里面。so easy，于是就有以下代码：&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 大致意思如下，并非真实模块中的代码&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'token=xxxxxxxx;domain=xxx.com;path=/;expires=xxxx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;大功告成！但是，问题也来了，这样做并不安全，用户的信息可以轻易的通过JS获取，&lt;code class=&quot;highlighter-rouge&quot;&gt;XSS&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;CSRF&lt;/code&gt;变的轻而易举。于是，我们将种cookie的操作交给了服务端，并给其中一个cookie加上了&lt;code class=&quot;highlighter-rouge&quot;&gt;httponly&lt;/code&gt;属性，这个属性&lt;strong&gt;仅仅&lt;/strong&gt;保证我们的cookie不能通过&lt;code class=&quot;highlighter-rouge&quot;&gt;document.cookie&lt;/code&gt;来获取，减小了用户cookie被窃取的概率。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Cookie&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;token1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xxxxx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;expires&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;GMT&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xxx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/; domain=xxx.co&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;m
+&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Cookie&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;token2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xxxxx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;expires&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;GMT&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Age&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;xxx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/; domain=xxx.com; httponl&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;y
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;好啦，再次大功告成。但是，过了一段时间，我们的网站多啦，同时存在了几个域名，我们需要在用户登录的时，同时给多个域种cookie。OK，很简单，我们只需要调用多个域名下的种cookie的接口，不就行啦？&lt;/p&gt;
+
+&lt;p&gt;事情没有这么简单，经过测试之后发现我们的cookie在某些特定的浏览器下有可能跨域种cookie失败。为什么呢？经过一番google之后，发现其实是一些浏览器对于跨域种cookie做了一些限制，我们需要用一些方法来解决限制。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;P3P由万维网协会研制，它为Web用户提供了对自己公开信息的更多的控制。支持P3P的Web站点可以为浏览者声明他们的隐私策略。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;其实上面都是废话，大概意思就是说你要在你的http header里面加入一个P3P协议的说明，详细信息可以看这个歪果仁写的文章&lt;a href=&quot;https://www.sitepoint.com/p3p-cookies-ie6/2/&quot;&gt;“P3P, Cookies and IE6.0: A Case Study”&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;P3P&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;NOI ADM DEV PSAi COM NAV OUR OTRo STP IND DEM&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;很开心，再次大功告成。BUT，现实总是这么残酷，safari上仍然不能跨域种cookie。这又是为什么呢？根据苹果爸爸的尿性来推测，肯定又是他做了什么安全性的限制。果然！在safari浏览器中打开&lt;code class=&quot;highlighter-rouge&quot;&gt;设置 &amp;gt; 隐私 &amp;gt; 阻止cookie &amp;gt; 永不&lt;/code&gt;，打开上述设置之后，跨域种cookie瞬间成功。但是，我们总不能要求用户一个个去打开这个设置吧？所以还要另寻解决办法。&lt;/p&gt;
+
+&lt;p&gt;后来我们发现其实对于safari来说所谓的第三方需要满足两个条件：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;用户从来没有主动访问该域名&lt;/li&gt;
+  &lt;li&gt;该域名并没有作为第一方种过cookie&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;基于以上两点我们做了2个操作：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;通过&lt;code class=&quot;highlighter-rouge&quot;&gt;http 302&lt;/code&gt;的方式来跨域种cookie&lt;/li&gt;
+  &lt;li&gt;在用户访问我们的域名之后，默认在访问域名下种下一个记录性的cookie，减小我们的域名种Cookie失败的概率&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;好啦，这次真的大功告成啦，写一篇流水账记录一下这个坑。&lt;/p&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="WTF" /><summary type="html">流水账，关于在项目中使用cookie遇到的一些坑</summary></entry><entry><title type="html">Electron简介（译）</title><link href="http://localhost:4000/blog/essential-electron" rel="alternate" type="text/html" title="Electron简介（译）" /><published>2017-02-18T00:00:00+00:00</published><updated>2017-02-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/essential-electron</id><content type="html" xml:base="http://localhost:4000/blog/essential-electron">&lt;h2 id=&quot;electron&quot;&gt;一、什么是Electron?&lt;/h2&gt;
 
 &lt;p&gt;Electron是一个让你通过JavaScript、HTML、CSS就可以编写桌面应用的库。这些应用可以打包运行在Mac、Windows、Linux电脑上，同时也可以放到Mac和Windows的App Store中。&lt;/p&gt;
 
@@ -196,7 +240,7 @@
 &lt;blockquote&gt;
   &lt;ul&gt;
     &lt;li&gt;原文链接:&lt;a href=&quot;http://jlord.us/essential-electron/&quot;&gt;Essential Electron&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;译文地址:&lt;a href=&quot;http://www.sshfe.com&quot;&gt;sshfe.com&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;译文地址:&lt;a href=&quot;http://ssh.today&quot;&gt;ssh.today&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;分享PPT:&lt;a href=&quot;https://ppt.baomitu.com/p/9ed9fea8&quot;&gt;ppt&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
@@ -524,7 +568,7 @@
     &lt;li&gt;原文链接:&lt;a href=&quot;http://ejohn.org/blog/how-javascript-timers-work/&quot;&gt;How JavaScript Timers Work&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;原文作者:&lt;a href=&quot;http://ejohn.org/&quot;&gt;John Resig&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;译文地址:&lt;a href=&quot;http://www.sshfe.com&quot;&gt;sshfe.com&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;译文地址:&lt;a href=&quot;http://ssh.today&quot;&gt;ssh.today&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="Translate" /><summary type="html">最近公司开始组织分享会，吓得我赶紧准备准备，于是，我就找找资料终于决定把第一次的题目定为定时器那些事，本文就是在搜索资料中找到的一片有意思的文章，本文将告诉你JS定时器的在浏览器中的工作原理</summary></entry><entry><title type="html">在Windows下开发ReactNative程序</title><link href="http://localhost:4000/blog/code-react-native-in-windows" rel="alternate" type="text/html" title="在Windows下开发ReactNative程序" /><published>2016-12-16T00:00:00+00:00</published><updated>2016-12-16T00:00:00+00:00</updated><id>http://localhost:4000/blog/code-react-native-in-windows</id><content type="html" xml:base="http://localhost:4000/blog/code-react-native-in-windows">&lt;h2 id=&quot;section&quot;&gt;安装依赖&lt;/h2&gt;
 &lt;p&gt;需要的依赖:&lt;/p&gt;
@@ -1775,7 +1819,7 @@ npm install node-fetch request --save
     &lt;li&gt;原文链接:&lt;a href=&quot;https://www.twilio.com/blog/2016/10/guide-to-javascript-promises.html&quot;&gt;A quick guide to JavaScript Promises&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;原文作者:&lt;a href=&quot;https://github.com/dkundel&quot;&gt;dkundel&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;译文地址:&lt;a href=&quot;http://www.sshfe.com&quot;&gt;sshfe.com&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;译文地址:&lt;a href=&quot;http://ssh.today&quot;&gt;ssh.today&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="Translate" /><summary type="html">本文是一片关于如何让一个初学者迅速掌握Promise的文章，我也是在学习了Promise之后，无意中发现了这篇文章，发现自己对promise的理解还有很多遗漏的地方，于是就把它翻译了一遍。</summary></entry><entry><title type="html">移动端H5的那些坑</title><link href="http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng" rel="alternate" type="text/html" title="移动端H5的那些坑" /><published>2016-09-24T00:00:00+00:00</published><updated>2016-09-24T00:00:00+00:00</updated><id>http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng</id><content type="html" xml:base="http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng">&lt;h1 id=&quot;section&quot;&gt;背景&lt;/h1&gt;
 &lt;p&gt;最近被安排去开发一个移动端H5页面，移动端屏幕尺寸、系统版本的碎片化，导致移动端开发坑相当多啊。&lt;/p&gt;

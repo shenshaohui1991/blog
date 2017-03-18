@@ -1,10 +1,9 @@
 ---
 layout: pageminimal
-title: Category Index
+title: 分类
 permalink: /categories/
-title: Category Index
 tags: [Categories]
-description: "An archive of posts sorted by categories."
+description: "按分类归档文章"
 ---
 
 <ul class="tag-box inline">
@@ -37,9 +36,7 @@ description: "An archive of posts sorted by categories."
     {% if group == null or group == post.group %}
     <li>
         <a href="{{ site.url }}{{ post.url }}">
-            {{ post.title }}<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d,
-            %Y" }}
-        </time></span>
+            {{ post.title }}<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%Y-%m-%d" }}</time></span>
         </a>
     </li>
     {% endif %}
@@ -48,6 +45,5 @@ description: "An archive of posts sorted by categories."
 
     {% assign pages_list = nil %}
     {% assign group = nil %}
-
 </ul>
 {% endfor %}

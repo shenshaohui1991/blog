@@ -1,16 +1,13 @@
 ---
 layout: pageminimal
-title: Tag Index
+title: 标签
 permalink: /tags/
-description: "An archive of posts sorted by tag."
+description: "按标签归档文章"
 ---
 
 <ul class="tag-box inline">
-
     {% assign tags_list = site.tags %}
-
     {% if tags_list.first[0] == null %}
-
     {% for tag in tags_list %}
     <li>
         <a href="#{{ tag }}">
@@ -18,9 +15,7 @@ description: "An archive of posts sorted by tag."
         </a>
     </li>
     {% endfor %}
-
     {% else %}
-
     {% for tag in tags_list %}
     <li>
         <a href="#{{ tag[0] }}">
@@ -28,11 +23,8 @@ description: "An archive of posts sorted by tag."
         </a>
     </li>
     {% endfor %}
-
     {% endif %}
-
     {% assign tags_list = nil %}
-
 </ul>
 
 {% for tag in site.tags %}
@@ -44,9 +36,7 @@ description: "An archive of posts sorted by tag."
     {% if group == null or group == post.group %}
     <li>
         <a href="{{ site.url }}{{ post.url }}">
-            {{ post.title }}<span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%B %d,
-            %Y" }}
-        </time>
+            {{ post.title }} <span class="entry-date"><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | date: "%Y-%m-%d" }}</time></span>
         </a>
     </li>
     {% endif %}

@@ -1,0 +1,28 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "南来的北往的走进来看一下看吧，[点我！戳我！](http://ssh.today)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shenshaohui1991/blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shenshaohui1991/blog/issues"
+  },
+  "homepage": "https://github.com/shenshaohui1991/blog#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-clean-css": "^3.0.3",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-stylus": "^2.6.0",
+    "gulp-uglify": "^2.1.0",
+    "imagemin-pngquant": "^5.0.0"
+  }
+}

@@ -4,3 +4,6 @@ Gemfile.lock
 *.sublime*
 .idea/workspace.xml
 _posts/2016-09-24-yi-dong-duan-de-na-xie-keng.md
+
+.idea/
+node_modules/

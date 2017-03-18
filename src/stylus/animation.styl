@@ -1,0 +1,122 @@
+.animated .small,
+.animated .medium,
+.animated .large {
+    opacity: 0;
+    transition-property: all;
+}
+
+.animated .large {
+    transition-delay: 1s;
+    transition-duration: 1s;
+}
+
+.animated .medium {
+    transition-delay: 1.35s;
+    transition-duration: 0.75s;
+}
+
+.animated .small {
+    transition-delay: 1.5s;
+    transition-duration: 0.5s;
+}
+
+.animated.from-bottom .small,
+.animated.from-bottom .medium,
+.animated.from-bottom .large {
+    opacity: 1;
+    transform: translateY(100%);
+}
+
+.animated.from-top .small,
+.animated.from-top .medium,
+.animated.from-top .large {
+    opacity: 1;
+    transform: translateY(-100%);
+}
+
+.animated.animation-on .small,
+.animated.animation-on .medium,
+.animated.animation-on .large {
+    transform: translateY(0%);
+}
+
+@-webkit-keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animated {
+    animation-fill-mode: both;
+    animation-duration: 1.5s;
+    animation-delay: .5s;
+}
+
+.fade {
+    animation-name: fade;
+}
+
+#sidebar.slide {
+    left: 0;
+}
+
+a#slide.slide {
+    left: 308px;
+    pointer-events: none;
+}
+
+body.slide {
+    left: 298px;
+    overflow: hidden;
+}
+
+#fade {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background: transparent;
+    z-index: 30;
+}
+
+#fade.slide {
+    pointer-events: auto;
+    left: 298px;
+    background: rgba(0,0,0,.2);
+}

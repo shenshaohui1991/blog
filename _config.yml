@@ -1,21 +1,18 @@
-title:            SSH
-description:      Ssh's blog
-logo:             omikron.png
+title: SSH
+description: SSH的个人博客
 
 disqus_shortname: shortname
 # Assign a default image for your site's header and footer
-default_bg:       default_bg.jpg
-search:           true
-share:            true
-# Read Time is a calculator tp provide post read-time based on word count. Usage is recommended.
-readtime:         true
+default_bg: default_bg.jpg
+search: true
+share: true
 # Turn on or off the fin animations in the header and footer
-triangleheader:	  true
-animated_fins:    true
+triangleheader: true
+animated_fins: true
 # Specify the fin color in RGB value
-fin_color:        "255,255,255"
+fin_color: "255,255,255"
 # Change url to your domain. Leave localhost server or blank when working locally.
-url:          http://ssh.today
+url: http://ssh.today
 # baseurl:           
 
 # Gems used
@@ -35,38 +32,25 @@ jekyll-archives:
     - tags
   layout: 'archive'
   permalinks:
-    # year: '/:year/'
-    # month: '/:year/:month/'
-    # day: '/:year/:month/:day/'
     tag: '/archive/tag/:name/'
     category: '/archive/category/:name/'
 
 # Owner/author information
 author:
-  name:           shenshaohui
-  picture:        wukong.jpg
-  email:          443939294@qq.com
-  # Use the coder's toolbox at http://coderstoolbox.net/string/#!encoding=xml&action=encode&charset=us_ascii to encode your description into XML string
-  description:    'Talk is cheap, Show me the code.'
-  # Social networking links used in footer. Update and remove as you like.
-  twitter:
-  facebook:
+  name: shenshaohui
+  picture: wukong.jpg
+  email: 443939294@qq.com
+  description: "Talk is cheap, Show me the code."
   github: "shenshaohui1991"
-  linkedin:
-  instagram:
-  tumblr:
-  google_plus:
 
-# Links to include in top navigation
-# For external links add external: true
 links:
-  - title: Home
+  - title: 首页
     url: /
     external: false
     icon: home
-  - title: Categories
+  - title: 分类
     url: /categories
-  - title: Tags
+  - title: 标签
     url: /tags
 
 # Sitemap configuration
@@ -81,11 +65,11 @@ sitemap:
         - "/index.html"
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    Asia/Shanghai
-future:      true
-markdown:    kramdown
+timezone: Asia/Shanghai
+future: true
+markdown: kramdown
 highlighter: rouge
-paginate:    6
+paginate: 6
 paginate_path: "/blog/:num/"
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks

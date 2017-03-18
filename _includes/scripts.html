@@ -1,77 +1,72 @@
 <script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="{{ site.url }}/assets/js/vendor/jquery-1.12.4.min.js"><\/script>')</script>
-
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{{ site.url }}/dist/js/lib/jekyll-search.min.js"></script>
+<script src="{{ site.url }}/dist/js/lib/jquery.fitvids.js"></script>
+<script src="{{ site.url }}/dist/js/lib/jquery.waypoints.min.js"></script>
+<script src="{{ site.url }}/dist/js/lib/jquery.magnific-popup.min.js"></script>
+<script src="{{ site.url }}/dist/js/main.js"></script>
+<script src="{{ site.url }}/dist/js/script.js"></script>
+<script>
+    $(function () {
+        $(".time").text(function (a, b) {
+            return Math.round(parseFloat(b))
+        });
+    });
 
-<script type="text/javascript" src="{{ site.url }}/assets/js/plugins/jekyll-search.min.js"></script>
-<script type="text/javascript" src="{{ site.url }}/assets/js/plugins/jquery.fitvids.js"></script>
-<script type="text/javascript" src="{{ site.url }}/assets/js/plugins/jquery.waypoints.min.js"></script>
-<script type="text/javascript" src="{{ site.url }}/assets/js/plugins/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="{{ site.url }}/assets/js/main.js"></script>
-<script type="text/javascript" src="{{ site.url }}/assets/js/script.js"></script>
-<script type='text/javascript'>$(document).ready(function(){$(".time").text(function(a,b){return Math.round(parseFloat(b))})});</script>
+    /* Slides */
+    $("a#slide").click(function(){
+        $("#sidebar,body,a#slide,#fade").addClass("slide")
+    });
 
-<script type="text/javascript">
+    $("#fade,#header,#posts-container").click(function(){
+        $("#sidebar,body,a#slide,#fade").removeClass("slide")
+    });
 
-/*      Slides       */
-$("a#slide").click(function(){
-    $("#sidebar,body,a#slide,#fade").addClass("slide")
-});
+    $("a#click-filter").click(function(){
+        $("#slide-filter").slideToggle("medium");
+        $("#slide-pages").slideOut("medium");
+    });
 
-$("#fade,#header,#posts-container").click(function(){
-    $("#sidebar,body,a#slide,#fade").removeClass("slide")
-});
-
-$("a#click-filter").click(function(){
-    $("#slide-filter").slideToggle("medium");
-    $("#slide-pages").slideOut("medium");
-});
-
-$("a#click-pages").click(function(){
-    $("#slide-pages").slideToggle("medium");
-    $("#slide-filter").slideOut("medium");
-});
-/*      End-Slides      */
-
+    $("a#click-pages").click(function(){
+        $("#slide-pages").slideToggle("medium");
+        $("#slide-filter").slideOut("medium");
+    });
 </script>
 
 {% if site.search %}
-<!-- Jekyll Simple Search option -->
 <script>
-
-   SimpleJekyllSearch({
+    SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('results-container'),
-        json: '{{ site.url}}/assets/json/search.json',
+        json: '{{ site.url}}/dist/json/search.json',
         searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
         noResultsText: '<p>Nothing found.</p>',
         limit: 10,
         fuzzy: false,
         exclude: ['Welcome']
-      });
+    });
 
-  (function( $, window, undefined ) {
-    
-     var bs = {
-          close: $("#search-close"),
-          searchform: $(".search-form"),
-          canvas: $("body"),
-          dothis: $('.dosearch')
-      };
-    
-    bs.dothis.on('click', function() {
-      $('.search-wrapper').css({ display: "block" });
-      bs.searchform.toggleClass('active');
-      bs.searchform.find('input').focus();
-      bs.canvas.toggleClass('search-overlay');
-    });
-    
-      bs.close.on('click', function() {
-        $('.search-wrapper').removeAttr( 'style' );
-        bs.searchform.toggleClass('active');
-        bs.canvas.removeClass('search-overlay');
-    });
-  })( jQuery, window );
+    (function ($, window, undefined) {
+        var bs = {
+            close: $("#search-close"),
+            searchform: $(".search-form"),
+            canvas: $("body"),
+            dothis: $('.dosearch')
+        };
+
+        bs.dothis.on('click', function () {
+            $('.search-wrapper').css({display: "block"});
+            bs.searchform.toggleClass('active');
+            bs.searchform.find('input').focus();
+            bs.canvas.toggleClass('search-overlay');
+        });
+
+        bs.close.on('click', function () {
+            $('.search-wrapper').removeAttr('style');
+            bs.searchform.toggleClass('active');
+            bs.canvas.removeClass('search-overlay');
+        });
+    })(jQuery, window);
 </script>
 {% endif %}
 
