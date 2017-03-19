@@ -3,8 +3,8 @@ layout: post
 title: '在Windows下开发ReactNative程序'
 date: 2016-12-16
 author: SSH
-categories: [front]
-tags: [Javascript, ReactNative]
+categories: [ReactNative]
+tags: [ReactNative]
 excerpt: 本文教你如何在windows上搭建ReactNative环境，步骤很简单，只要网速够快就可以啦。。
 ---
 

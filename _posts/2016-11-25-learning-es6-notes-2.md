@@ -3,8 +3,8 @@ layout: post
 title: 'ES6学习笔记2'
 date: 2016-11-25
 author: SSH
-categories: [front]
-tags: [Javascript, ES6]
+categories: [ES6]
+tags: [ES6]
 excerpt: 这周继续学习ES6，进度有点慢了，所以准备尽快写完ES6的学习笔记，这样可以开始ReactNative的学习。这一次主要是了解的是对象、Map、Set相关的知识，同时要推荐一下阮一峰老师的ES6教程很详细
 ---
 

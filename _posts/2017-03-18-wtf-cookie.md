@@ -3,8 +3,8 @@ layout: post
 title: '项目填坑记-cookie'
 date: 2017-03-18
 author: SSH
-categories: [front]
-tags: [Javascript, WTF]
+categories: [Javascript]
+tags: [WTF]
 excerpt: 流水账，关于在项目中使用cookie遇到的一些坑
 ---
 

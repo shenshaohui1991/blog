@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-18T15:24:22+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>SSH的个人博客</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">项目填坑记-cookie</title><link href="http://localhost:4000/blog/wtf-cookie" rel="alternate" type="text/html" title="项目填坑记-cookie" /><published>2017-03-18T00:00:00+00:00</published><updated>2017-03-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/wtf-cookie</id><content type="html" xml:base="http://localhost:4000/blog/wtf-cookie">&lt;p&gt;前段时间开发了一个用户登录的模块，需求很简单，用户输入手机号和验证码，我们就会返回给用户一套身份信息并保存在cookie里面。so easy，于是就有以下代码：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-19T02:55:28+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>个人博客</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">项目填坑记-cookie</title><link href="http://localhost:4000/blog/wtf-cookie" rel="alternate" type="text/html" title="项目填坑记-cookie" /><published>2017-03-18T00:00:00+00:00</published><updated>2017-03-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/wtf-cookie</id><content type="html" xml:base="http://localhost:4000/blog/wtf-cookie">&lt;p&gt;前段时间开发了一个用户登录的模块，需求很简单，用户输入手机号和验证码，我们就会返回给用户一套身份信息并保存在cookie里面。so easy，于是就有以下代码：&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 大致意思如下，并非真实模块中的代码&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'token=xxxxxxxx;domain=xxx.com;path=/;expires=xxxx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -42,7 +42,7 @@
   &lt;li&gt;在用户访问我们的域名之后，默认在访问域名下种下一个记录性的cookie，减小我们的域名种Cookie失败的概率&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;好啦，这次真的大功告成啦，写一篇流水账记录一下这个坑。&lt;/p&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="WTF" /><summary type="html">流水账，关于在项目中使用cookie遇到的一些坑</summary></entry><entry><title type="html">Electron简介（译）</title><link href="http://localhost:4000/blog/essential-electron" rel="alternate" type="text/html" title="Electron简介（译）" /><published>2017-02-18T00:00:00+00:00</published><updated>2017-02-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/essential-electron</id><content type="html" xml:base="http://localhost:4000/blog/essential-electron">&lt;h2 id=&quot;electron&quot;&gt;一、什么是Electron?&lt;/h2&gt;
+&lt;p&gt;好啦，这次真的大功告成啦，写一篇流水账记录一下这个坑。&lt;/p&gt;</content><author><name>SSH</name></author><category term="WTF" /><summary type="html">流水账，关于在项目中使用cookie遇到的一些坑</summary></entry><entry><title type="html">Electron简介（译）</title><link href="http://localhost:4000/blog/essential-electron" rel="alternate" type="text/html" title="Electron简介（译）" /><published>2017-02-18T00:00:00+00:00</published><updated>2017-02-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/essential-electron</id><content type="html" xml:base="http://localhost:4000/blog/essential-electron">&lt;h2 id=&quot;electron&quot;&gt;一、什么是Electron?&lt;/h2&gt;
 
 &lt;p&gt;Electron是一个让你通过JavaScript、HTML、CSS就可以编写桌面应用的库。这些应用可以打包运行在Mac、Windows、Linux电脑上，同时也可以放到Mac和Windows的App Store中。&lt;/p&gt;
 
@@ -244,7 +244,7 @@
     &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;分享PPT:&lt;a href=&quot;https://ppt.baomitu.com/p/9ed9fea8&quot;&gt;ppt&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="Electron" /><category term="Translate" /><summary type="html">最近想做一个上传图片的桌面应用，于是就找了一下Electron相关的资料。但是，electron相关的文章太少了，千辛万苦终于找到了一篇，在这里就翻译一下它，作为学习Electron的第一步。</summary></entry><entry><title type="html">Javascript定时器那些事儿</title><link href="http://localhost:4000/blog/something-about-js-timer" rel="alternate" type="text/html" title="Javascript定时器那些事儿" /><published>2017-01-02T00:00:00+00:00</published><updated>2017-01-02T00:00:00+00:00</updated><id>http://localhost:4000/blog/something-about-js-timer</id><content type="html" xml:base="http://localhost:4000/blog/something-about-js-timer">&lt;h2 id=&quot;section&quot;&gt;一、什么是定时器&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Translate" /><summary type="html">最近想做一个上传图片的桌面应用，于是就找了一下Electron相关的资料。但是，electron相关的文章太少了，千辛万苦终于找到了一篇，在这里就翻译一下它，作为学习Electron的第一步。</summary></entry><entry><title type="html">Javascript定时器那些事儿</title><link href="http://localhost:4000/blog/something-about-js-timer" rel="alternate" type="text/html" title="Javascript定时器那些事儿" /><published>2017-01-02T00:00:00+00:00</published><updated>2017-01-02T00:00:00+00:00</updated><id>http://localhost:4000/blog/something-about-js-timer</id><content type="html" xml:base="http://localhost:4000/blog/something-about-js-timer">&lt;h2 id=&quot;section&quot;&gt;一、什么是定时器&lt;/h2&gt;
 
 &lt;p&gt;JS提供了一些原生方法来实现延时去执行某一段代码，下面来简单介绍一下&lt;/p&gt;
 
@@ -307,13 +307,16 @@
   &lt;/ul&gt;
 &lt;/blockquote&gt;
 
+&lt;p&gt;上面简单的介绍了四种JS的定时器，而本文将会主要介绍比较常用的两种：&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;。&lt;/p&gt;
+
 &lt;h2 id=&quot;section-1&quot;&gt;二、举个栗子&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;基本用法&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;intervalId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;timeoutId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 下面代码执行之后会输出什么？&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;intervalId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;timeoutId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
 &lt;span class=&quot;nx&quot;&gt;timeoutId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -330,6 +333,8 @@
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;clearInterval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;intervalId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 分别输出: 2、4、5&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -337,7 +342,8 @@
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;的区别？&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 执行在面的代码块会输出什么？&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'timeout'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
@@ -345,9 +351,11 @@
     &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'interval'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
+&lt;span class=&quot;c1&quot;&gt;// 输出一次 timeout，每隔1S输出一次 interval&lt;/span&gt;
 
 &lt;span class=&quot;cm&quot;&gt;/*--------------------------------*/&lt;/span&gt;
 
+&lt;span class=&quot;c1&quot;&gt;// 通过setTimeout模拟setInterval 和 setInterval有啥区别么？&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;times&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;clearTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timeoutId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -379,10 +387,12 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;仅仅在执行次数上有区别，&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;一次、&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;n次，而通过&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;模拟的&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;的区别则在于：&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;只有在&lt;strong&gt;&lt;em&gt;回调完成之后才会去调用下一次定时器&lt;/em&gt;&lt;/strong&gt;，而&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;则不管回调函数的执行情况，当&lt;strong&gt;&lt;em&gt;到达规定时间就会在事件队列中插入一个执行回调的事件&lt;/em&gt;&lt;/strong&gt;，所以在选择定时器的方式时需要考虑&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;的这种特性是否会对你的业务代码有什么影响？&lt;/p&gt;
+&lt;p&gt;如果是&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;的话，它俩仅仅在执行次数上有区别，&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;一次、&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;n次。&lt;/p&gt;
+
+&lt;p&gt;而通过&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;模拟的&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;与&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;的区别则在于：&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;只有在&lt;strong&gt;回调完成之后才会去调用下一次定时器&lt;/strong&gt;，而&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;则不管回调函数的执行情况，当&lt;strong&gt;到达规定时间就会在事件队列中插入一个执行回调的事件&lt;/strong&gt;，所以在选择定时器的方式时需要考虑&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;的这种特性是否会对你的业务代码有什么影响？&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout(func, 0)&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;setImmediate(func)&lt;/code&gt;谁更快？&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout(func, 0)&lt;/code&gt; 和 &lt;code class=&quot;highlighter-rouge&quot;&gt;setImmediate(func)&lt;/code&gt;谁更快？(仅仅是好奇，才写的这段测试)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'immediate'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -401,12 +411,13 @@
 &lt;p&gt;在&lt;code class=&quot;highlighter-rouge&quot;&gt;Node.JS v6.7.0&lt;/code&gt;中测试发现&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;更早执行&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;面试题&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;面试题&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;下面代码运行后的结果是什么？&lt;/p&gt;
 
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 题目一&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
  
 &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -418,6 +429,7 @@
 
 &lt;span class=&quot;cm&quot;&gt;/*--------------------------------*/&lt;/span&gt;
 
+&lt;span class=&quot;c1&quot;&gt;// 题目二&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -426,6 +438,7 @@
 
 &lt;span class=&quot;cm&quot;&gt;/*--------------------------------*/&lt;/span&gt;
 
+&lt;span class=&quot;c1&quot;&gt;// 题目三&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'obj'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;shout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -459,7 +472,11 @@
   &lt;li&gt;后面浏览器将在执行完当前队头的代码之后，将再次取出目前队头的事件来执行&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;p&gt;这里只是对定时器的原理做一个简单版的描述，实际的处理过程比这个复杂。&lt;/p&gt;
+
 &lt;h2 id=&quot;section-2&quot;&gt;四、题目答案&lt;/h2&gt;
+
+&lt;p&gt;好啦，我们现在再来看看上面的面试题的答案。&lt;/p&gt;
 
 &lt;p&gt;第一题&lt;/p&gt;
 
@@ -499,9 +516,9 @@
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;有最小时间间隔限制，HTML5标准为4ms，小于4ms按照4ms处理，但是每个浏览器实现的最小间隔都不同&lt;/li&gt;
-  &lt;li&gt;JS引擎只有一个线程，将会强制异步事件排队执行&lt;/li&gt;
-  &lt;li&gt;如果&lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;的回调执行时间长于指定的延迟，&lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;或许将无间隔的一个接一个执行&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt;的指向问题问题可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;bind&lt;/code&gt;函数、定义变量、箭头函数的方式来解决&lt;/li&gt;
+  &lt;li&gt;因为JS引擎只有一个线程，所以它将会强制异步事件排队执行&lt;/li&gt;
+  &lt;li&gt;如果&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;的回调执行时间长于指定的延迟，&lt;code class=&quot;highlighter-rouge&quot;&gt;setInterval&lt;/code&gt;将无间隔的一个接一个执行&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;this&lt;/code&gt;的指向问题可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;bind&lt;/code&gt;函数、定义变量、箭头函数的方式来解决&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;section-4&quot;&gt;六、参考&lt;/h2&gt;
@@ -509,7 +526,7 @@
   &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org&quot;&gt;MDN&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://ejohn.org/blog/how-javascript-timers-work/&quot;&gt;How JavaScript Timers Work&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;http://www.alloyteam.com/2016/05/javascript-timer/&quot;&gt;JavaScript定时器与执行机制解析&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="share" /><summary type="html">分享关于JS定时器的一点小知识点</summary></entry><entry><title type="html">Javascript定时器如何工作（译）</title><link href="http://localhost:4000/blog/how-javascript-timers-work" rel="alternate" type="text/html" title="Javascript定时器如何工作（译）" /><published>2016-12-26T00:00:00+00:00</published><updated>2016-12-26T00:00:00+00:00</updated><id>http://localhost:4000/blog/how-javascript-timers-work</id><content type="html" xml:base="http://localhost:4000/blog/how-javascript-timers-work">&lt;p&gt;从原理上了解JS定时器是如何工作是一件很重要的事。因为JS是单线程的，所以大多数时候定时器都会表现的不直观。让我们来看看我们所能看到的三个定时器函数，用他们来构建和操作定时器。&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>SSH</name></author><category term="Share" /><summary type="html">分享关于JS定时器的一点小知识点</summary></entry><entry><title type="html">Javascript定时器如何工作（译）</title><link href="http://localhost:4000/blog/how-javascript-timers-work" rel="alternate" type="text/html" title="Javascript定时器如何工作（译）" /><published>2016-12-26T00:00:00+00:00</published><updated>2016-12-26T00:00:00+00:00</updated><id>http://localhost:4000/blog/how-javascript-timers-work</id><content type="html" xml:base="http://localhost:4000/blog/how-javascript-timers-work">&lt;p&gt;从原理上了解JS定时器是如何工作是一件很重要的事。因为JS是单线程的，所以大多数时候定时器都会表现的不直观。让我们来看看我们所能看到的三个定时器函数，用他们来构建和操作定时器。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;var id = setTimeout(fn, delay);&lt;/code&gt;-初始化一个单独的定时器，定时器会在指定的延迟之后执行特定的函数，同时这个函数会返回一个唯一的ID，后面可以通过这个ID清除定时器。&lt;/li&gt;
@@ -570,7 +587,7 @@
     &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;译文地址:&lt;a href=&quot;http://ssh.today&quot;&gt;ssh.today&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="Translate" /><summary type="html">最近公司开始组织分享会，吓得我赶紧准备准备，于是，我就找找资料终于决定把第一次的题目定为定时器那些事，本文就是在搜索资料中找到的一片有意思的文章，本文将告诉你JS定时器的在浏览器中的工作原理</summary></entry><entry><title type="html">在Windows下开发ReactNative程序</title><link href="http://localhost:4000/blog/code-react-native-in-windows" rel="alternate" type="text/html" title="在Windows下开发ReactNative程序" /><published>2016-12-16T00:00:00+00:00</published><updated>2016-12-16T00:00:00+00:00</updated><id>http://localhost:4000/blog/code-react-native-in-windows</id><content type="html" xml:base="http://localhost:4000/blog/code-react-native-in-windows">&lt;h2 id=&quot;section&quot;&gt;安装依赖&lt;/h2&gt;
+&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Translate" /><summary type="html">最近公司开始组织分享会，吓得我赶紧准备准备，于是，我就找找资料终于决定把第一次的题目定为定时器那些事，本文就是在搜索资料中找到的一片有意思的文章，本文将告诉你JS定时器的在浏览器中的工作原理</summary></entry><entry><title type="html">在Windows下开发ReactNative程序</title><link href="http://localhost:4000/blog/code-react-native-in-windows" rel="alternate" type="text/html" title="在Windows下开发ReactNative程序" /><published>2016-12-16T00:00:00+00:00</published><updated>2016-12-16T00:00:00+00:00</updated><id>http://localhost:4000/blog/code-react-native-in-windows</id><content type="html" xml:base="http://localhost:4000/blog/code-react-native-in-windows">&lt;h2 id=&quot;section&quot;&gt;安装依赖&lt;/h2&gt;
 &lt;p&gt;需要的依赖:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -678,7 +695,7 @@
 &lt;span class=&quot;nx&quot;&gt;AppRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ReactNativeDemo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="ReactNative" /><summary type="html">本文教你如何在windows上搭建ReactNative环境，步骤很简单，只要网速够快就可以啦。。</summary></entry><entry><title type="html">ES6学习笔记3</title><link href="http://localhost:4000/blog/learning-es6-notes-3" rel="alternate" type="text/html" title="ES6学习笔记3" /><published>2016-12-11T00:00:00+00:00</published><updated>2016-12-11T00:00:00+00:00</updated><id>http://localhost:4000/blog/learning-es6-notes-3</id><content type="html" xml:base="http://localhost:4000/blog/learning-es6-notes-3">&lt;h2 id=&quot;class&quot;&gt;Class&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>SSH</name></author><category term="ReactNative" /><summary type="html">本文教你如何在windows上搭建ReactNative环境，步骤很简单，只要网速够快就可以啦。。</summary></entry><entry><title type="html">ES6学习笔记3</title><link href="http://localhost:4000/blog/learning-es6-notes-3" rel="alternate" type="text/html" title="ES6学习笔记3" /><published>2016-12-11T00:00:00+00:00</published><updated>2016-12-11T00:00:00+00:00</updated><id>http://localhost:4000/blog/learning-es6-notes-3</id><content type="html" xml:base="http://localhost:4000/blog/learning-es6-notes-3">&lt;h2 id=&quot;class&quot;&gt;Class&lt;/h2&gt;
 &lt;p&gt;在class提出之前其实已经有了一套继承的方式，那就是利用原型来类和继承&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Animate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -992,7 +1009,7 @@
 &lt;span class=&quot;c1&quot;&gt;// 不可以调用非对象&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Reflect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getPrototypeOf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// called on non-object&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="ES6" /><summary type="html">ES6学习笔记最后一篇，这段时间实在是太忙啦，所以隔了2周才写最后一篇，接下来应该是学习ReactNative啦。。</summary></entry><entry><title type="html">ES6学习笔记2</title><link href="http://localhost:4000/blog/learning-es6-notes-2" rel="alternate" type="text/html" title="ES6学习笔记2" /><published>2016-11-25T00:00:00+00:00</published><updated>2016-11-25T00:00:00+00:00</updated><id>http://localhost:4000/blog/learning-es6-notes-2</id><content type="html" xml:base="http://localhost:4000/blog/learning-es6-notes-2">&lt;h2 id=&quot;section&quot;&gt;对象的拓展&lt;/h2&gt;
+&lt;/div&gt;</content><author><name>SSH</name></author><category term="ES6" /><summary type="html">ES6学习笔记最后一篇，这段时间实在是太忙啦，所以隔了2周才写最后一篇，接下来应该是学习ReactNative啦。。</summary></entry><entry><title type="html">ES6学习笔记2</title><link href="http://localhost:4000/blog/learning-es6-notes-2" rel="alternate" type="text/html" title="ES6学习笔记2" /><published>2016-11-25T00:00:00+00:00</published><updated>2016-11-25T00:00:00+00:00</updated><id>http://localhost:4000/blog/learning-es6-notes-2</id><content type="html" xml:base="http://localhost:4000/blog/learning-es6-notes-2">&lt;h2 id=&quot;section&quot;&gt;对象的拓展&lt;/h2&gt;
 &lt;h3 id=&quot;section-1&quot;&gt;属性名&lt;/h3&gt;
 &lt;p&gt;在ES6中允许省略定义直接写入变量或者利用表达式的方式来动态计算变量名&lt;/p&gt;
 
@@ -1315,7 +1332,7 @@
 &lt;/table&gt;
 
 &lt;h3 id=&quot;weakmap&quot;&gt;WeakMap&lt;/h3&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WeakMap&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;WeakSet&lt;/code&gt;很类似，都会检查变量的引用，如果没有则会清理掉&lt;/p&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="ES6" /><summary type="html">这周继续学习ES6，进度有点慢了，所以准备尽快写完ES6的学习笔记，这样可以开始ReactNative的学习。这一次主要是了解的是对象、Map、Set相关的知识，同时要推荐一下阮一峰老师的ES6教程很详细</summary></entry><entry><title type="html">ES6学习笔记1</title><link href="http://localhost:4000/blog/learning-es6-notes-1" rel="alternate" type="text/html" title="ES6学习笔记1" /><published>2016-11-20T00:00:00+00:00</published><updated>2016-11-20T00:00:00+00:00</updated><id>http://localhost:4000/blog/learning-es6-notes-1</id><content type="html" xml:base="http://localhost:4000/blog/learning-es6-notes-1">&lt;h2 id=&quot;section&quot;&gt;背景&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;WeakMap&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;WeakSet&lt;/code&gt;很类似，都会检查变量的引用，如果没有则会清理掉&lt;/p&gt;</content><author><name>SSH</name></author><category term="ES6" /><summary type="html">这周继续学习ES6，进度有点慢了，所以准备尽快写完ES6的学习笔记，这样可以开始ReactNative的学习。这一次主要是了解的是对象、Map、Set相关的知识，同时要推荐一下阮一峰老师的ES6教程很详细</summary></entry><entry><title type="html">ES6学习笔记1</title><link href="http://localhost:4000/blog/learning-es6-notes-1" rel="alternate" type="text/html" title="ES6学习笔记1" /><published>2016-11-20T00:00:00+00:00</published><updated>2016-11-20T00:00:00+00:00</updated><id>http://localhost:4000/blog/learning-es6-notes-1</id><content type="html" xml:base="http://localhost:4000/blog/learning-es6-notes-1">&lt;h2 id=&quot;section&quot;&gt;背景&lt;/h2&gt;
 &lt;p&gt;之前校招的时候因为面试需要看了一阵子ES6，到了实际项目中发现学了的ES6没啥用武之地，前段时间看了下NodeJS早就开始支持原生ES6语法了,刚好情封大大在推荐《实战ES2015》这本书，于是就买了一本，后来才发现自己已经要落伍了，该学习学习啦。笔记大概会参照《实战ES2015》的目录总结，同时也会参考&lt;a href=&quot;http://es6katas.org/&quot;&gt;ES6 Katas&lt;/a&gt;里面的内容。&lt;/p&gt;
 
 &lt;h2 id=&quot;letconst&quot;&gt;let和const&lt;/h2&gt;
@@ -1533,7 +1550,7 @@
 &lt;span class=&quot;c1&quot;&gt;// return LexicallyBound object，在箭头函数中，使用call不能改变this的指向&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({});&lt;/span&gt; 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="ES6" /><summary type="html">之前校招的时候因为面试需要看了一阵子ES6，到了实际项目中发现学了的ES6没啥用武之地，前段时间看了下NodeJS早就开始支持原生ES6语法了,刚好情封大大在推荐《实战ES2015》这本书，于是就买了一本，后来才发现自己已经要落伍了，该学习学习啦。笔记大概会参照《实战ES2015》的目录总结，同时也会参考ES6 Katas里面的内容。</summary></entry><entry><title type="html">Javascript Promises快速指南(译)</title><link href="http://localhost:4000/blog/guide-to-javascript-promises" rel="alternate" type="text/html" title="Javascript Promises快速指南(译)" /><published>2016-10-14T00:00:00+00:00</published><updated>2016-10-14T00:00:00+00:00</updated><id>http://localhost:4000/blog/guide-to-javascript-promises</id><content type="html" xml:base="http://localhost:4000/blog/guide-to-javascript-promises">&lt;p&gt;当你在写JS代码的时候，&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes/Using_js-ctypes/Declaring_and_Using_Callbacks#Using_Callbacks&quot;&gt;回调函数&lt;/a&gt;是最让人困惑的概念之一。&lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&quot;&gt;Promise&lt;/a&gt;是一种改善异步代码的新方法。&lt;/p&gt;
+&lt;/div&gt;</content><author><name>SSH</name></author><category term="ES6" /><summary type="html">之前校招的时候因为面试需要看了一阵子ES6，到了实际项目中发现学了的ES6没啥用武之地，前段时间看了下NodeJS早就开始支持原生ES6语法了,刚好情封大大在推荐《实战ES2015》这本书，于是就买了一本，后来才发现自己已经要落伍了，该学习学习啦。笔记大概会参照《实战ES2015》的目录总结，同时也会参考ES6 Katas里面的内容。</summary></entry><entry><title type="html">Javascript Promises快速指南(译)</title><link href="http://localhost:4000/blog/guide-to-javascript-promises" rel="alternate" type="text/html" title="Javascript Promises快速指南(译)" /><published>2016-10-14T00:00:00+00:00</published><updated>2016-10-14T00:00:00+00:00</updated><id>http://localhost:4000/blog/guide-to-javascript-promises</id><content type="html" xml:base="http://localhost:4000/blog/guide-to-javascript-promises">&lt;p&gt;当你在写JS代码的时候，&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Mozilla/js-ctypes/Using_js-ctypes/Declaring_and_Using_Callbacks#Using_Callbacks&quot;&gt;回调函数&lt;/a&gt;是最让人困惑的概念之一。&lt;a href=&quot;https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise&quot;&gt;Promise&lt;/a&gt;是一种改善异步代码的新方法。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://www.twilio.com/blog/wp-content/uploads/2016/09/31orCejQRkSvmchYeZC2GKswNtst-d_xEoSPoP3X-bAm9RRe8hxz59vVZrrRm78VvJgVbuUo5R7dAikR2gY1rxtqQ14yMJP8K4CS3Siiir_wRpB6IYgoWGlpokE51vV4eYAI2lpP-1.png&quot; alt=&quot;回调地狱&quot; /&gt;&lt;/p&gt;
 
@@ -1821,7 +1838,7 @@ npm install node-fetch request --save
     &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;译文地址:&lt;a href=&quot;http://ssh.today&quot;&gt;ssh.today&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Javascript" /><category term="Translate" /><summary type="html">本文是一片关于如何让一个初学者迅速掌握Promise的文章，我也是在学习了Promise之后，无意中发现了这篇文章，发现自己对promise的理解还有很多遗漏的地方，于是就把它翻译了一遍。</summary></entry><entry><title type="html">移动端H5的那些坑</title><link href="http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng" rel="alternate" type="text/html" title="移动端H5的那些坑" /><published>2016-09-24T00:00:00+00:00</published><updated>2016-09-24T00:00:00+00:00</updated><id>http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng</id><content type="html" xml:base="http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng">&lt;h1 id=&quot;section&quot;&gt;背景&lt;/h1&gt;
+&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Translate" /><summary type="html">本文是一片关于如何让一个初学者迅速掌握Promise的文章，我也是在学习了Promise之后，无意中发现了这篇文章，发现自己对promise的理解还有很多遗漏的地方，于是就把它翻译了一遍。</summary></entry><entry><title type="html">移动端H5的那些坑</title><link href="http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng" rel="alternate" type="text/html" title="移动端H5的那些坑" /><published>2016-09-24T00:00:00+00:00</published><updated>2016-09-24T00:00:00+00:00</updated><id>http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng</id><content type="html" xml:base="http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng">&lt;h1 id=&quot;section&quot;&gt;背景&lt;/h1&gt;
 &lt;p&gt;最近被安排去开发一个移动端H5页面，移动端屏幕尺寸、系统版本的碎片化，导致移动端开发坑相当多啊。&lt;/p&gt;
 
 &lt;h1 id=&quot;section-1&quot;&gt;多屏适配&lt;/h1&gt;

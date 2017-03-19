@@ -3,8 +3,8 @@ layout: post
 title: 'ES6学习笔记1'
 date: 2016-11-20
 author: SSH
-categories: [front]
-tags: [Javascript, ES6]
+categories: [ES6]
+tags: [ES6]
 excerpt: 之前校招的时候因为面试需要看了一阵子ES6，到了实际项目中发现学了的ES6没啥用武之地，前段时间看了下NodeJS早就开始支持原生ES6语法了,刚好情封大大在推荐《实战ES2015》这本书，于是就买了一本，后来才发现自己已经要落伍了，该学习学习啦。笔记大概会参照《实战ES2015》的目录总结，同时也会参考ES6 Katas里面的内容。
 ---
 

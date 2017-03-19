@@ -3,8 +3,8 @@ layout: post
 title: 'ES6学习笔记3'
 date: 2016-12-11
 author: SSH
-categories: [front]
-tags: [Javascript, ES6]
+categories: [ES6]
+tags: [ES6]
 excerpt: ES6学习笔记最后一篇，这段时间实在是太忙啦，所以隔了2周才写最后一篇，接下来应该是学习ReactNative啦。。
 ---
 ## Class

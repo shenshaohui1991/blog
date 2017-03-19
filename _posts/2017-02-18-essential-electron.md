@@ -3,8 +3,8 @@ layout: post
 title: 'Electron简介（译）'
 date: 2017-02-18
 author: SSH
-categories: [front]
-tags: [Javascript, Electron, Translate]
+categories: [Electron]
+tags: [Translate]
 excerpt: 最近想做一个上传图片的桌面应用，于是就找了一下Electron相关的资料。但是，electron相关的文章太少了，千辛万苦终于找到了一篇，在这里就翻译一下它，作为学习Electron的第一步。
 ---
 

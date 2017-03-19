@@ -3,8 +3,8 @@ layout: post
 title: 'Javascript定时器那些事儿'
 date: 2017-01-02
 author: SSH
-categories: [front]
-tags: [Javascript, share]
+categories: [Javascript]
+tags: [Share]
 excerpt: 分享关于JS定时器的一点小知识点
 ---
 
@@ -32,7 +32,6 @@ var intervalId = window.setInterval(func, delay[, param1, param2, ...]);
 var intervalId = window.setInterval(code, delay);
 ```
 
-
 > - intervalId: 重复操作的ID
 > - func: 延迟调用的函数
 > - code: 代码段
@@ -56,11 +55,14 @@ var requestId = window.requestAnimationFrame(func);
 
 > - func: 回调
 
+上面简单的介绍了四种JS的定时器，而本文将会主要介绍比较常用的两种：`setTimeout`和`setInterval`。
+
 ## 二、举个栗子
 
 - 基本用法
 
 ```javascript
+// 下面代码执行之后会输出什么？
 var intervalId, timeoutId;
 
 timeoutId = setTimeout(function () {
@@ -78,11 +80,14 @@ intervalId = setInterval(function () {
     console.log(4);
     clearInterval(intervalId);
 }, 200);
+
+// 分别输出: 2、4、5
 ```
 
 - `setInterval` 和 `setTimeout`的区别？
 
 ```javascript
+// 执行在面的代码块会输出什么？
 setTimeout(function () {
     console.log('timeout');
 }, 1000);
@@ -91,9 +96,11 @@ setInterval(function () {
     console.log('interval')
 }, 1000);
 
+// 输出一次 timeout，每隔1S输出一次 interval
 
 /*--------------------------------*/
 
+// 通过setTimeout模拟setInterval 和 setInterval有啥区别么？
 var callback = function () {
     if (times++ > max) {
         clearTimeout(timeoutId);
@@ -124,9 +131,11 @@ imitateInterval(callback, delay);
 intervalId = setInterval(callback, delay);
 ```
 
-`setTimeout`和`setInterval`仅仅在执行次数上有区别，`setTimeout`一次、`setInterval`n次，而通过`setTimeout`模拟的`setInterval`与`setInterval`的区别则在于：`setTimeout`只有在***回调完成之后才会去调用下一次定时器***，而`setInterval`则不管回调函数的执行情况，当***到达规定时间就会在事件队列中插入一个执行回调的事件***，所以在选择定时器的方式时需要考虑`setInterval`的这种特性是否会对你的业务代码有什么影响？
+如果是`setTimeout`和`setInterval`的话，它俩仅仅在执行次数上有区别，`setTimeout`一次、`setInterval`n次。
 
-- `setTimeout(func, 0)` 和 `setImmediate(func)`谁更快？
+而通过`setTimeout`模拟的`setInterval`与`setInterval`的区别则在于：`setTimeout`只有在**回调完成之后才会去调用下一次定时器**，而`setInterval`则不管回调函数的执行情况，当**到达规定时间就会在事件队列中插入一个执行回调的事件**，所以在选择定时器的方式时需要考虑`setInterval`的这种特性是否会对你的业务代码有什么影响？
+
+- `setTimeout(func, 0)` 和 `setImmediate(func)`谁更快？(仅仅是好奇，才写的这段测试)
 
 ```javascript
 console.time('immediate');
@@ -143,11 +152,12 @@ setTimeout(() => {
 
 在`Node.JS v6.7.0`中测试发现`setTimeout`更早执行
 
-- 面试题
+- **面试题**
 
 下面代码运行后的结果是什么？
 
 ```javascript
+// 题目一
 var t = true;
  
 setTimeout(function(){
@@ -160,6 +170,7 @@ alert('end');
 
 /*--------------------------------*/
 
+// 题目二
 for (var i = 0; i < 5; i++) {
     setTimeout(function () {
         console.log(i);
@@ -168,6 +179,7 @@ for (var i = 0; i < 5; i++) {
 
 /*--------------------------------*/
 
+// 题目三
 var obj = {
     msg: 'obj',
     shout: function () {
@@ -198,7 +210,11 @@ obj.waitAndShout();
 - 在浏览器处理鼠标点击回调时，`setInterval`再次检查到到达延迟时间，他将再次向事件队列中插入一个interval的回调，以后每隔指定的延迟时间之后都会向队列中插入一个回调
 - 后面浏览器将在执行完当前队头的代码之后，将再次取出目前队头的事件来执行
 
+这里只是对定时器的原理做一个简单版的描述，实际的处理过程比这个复杂。
+
 ## 四、题目答案
+
+好啦，我们现在再来看看上面的面试题的答案。
 
 第一题
 
@@ -231,9 +247,9 @@ obj.waitAndShout();
 ## 五、需要注意的点
 
 - `setTimeout`有最小时间间隔限制，HTML5标准为4ms，小于4ms按照4ms处理，但是每个浏览器实现的最小间隔都不同
-- JS引擎只有一个线程，将会强制异步事件排队执行
-- 如果`interval`的回调执行时间长于指定的延迟，`interval`或许将无间隔的一个接一个执行
-- `this`的指向问题问题可以通过`bind`函数、定义变量、箭头函数的方式来解决
+- 因为JS引擎只有一个线程，所以它将会强制异步事件排队执行
+- 如果`setInterval`的回调执行时间长于指定的延迟，`setInterval`将无间隔的一个接一个执行
+- `this`的指向问题可以通过`bind`函数、定义变量、箭头函数的方式来解决
 
 ## 六、参考
 + [MDN](https://developer.mozilla.org)

@@ -4,16 +4,7 @@
     {% include head.html %}
 </head>
 <body class="home-template" itemscope itemtype="http://schema.org/WebPage">
-    {% if site.search %}
-    <div class="search-wrapper">
-        <div class="search-form">
-            <input type="text" id="search-input" class="search-field" placeholder="搜点啥呗。。">
-            <i id="search-close" class="fa fa-times-circle"></i>
-            <h4>搜索结果</h4>
-            <ul id="results-container" class="search-results post-list"></ul>
-        </div>
-    </div>
-    {% endif %}
+    {% include search.html %}
 
     <div id="fade"></div>
     <a id="slide" class="animated fade"></a>
@@ -40,11 +31,9 @@
             style="background-image: url({{ site.url }}/dist/img/{{ site.default_bg }})"
             itemscope itemtype="http://schema.org/Organization">
 
-        {% if site.search %}
         <button class="menu-button animated fade dosearch">
             <i class="fa fa-search"></i>
         </button>
-        {% endif %}
 
         <div class="inner">
             <div class="container">

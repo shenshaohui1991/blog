@@ -33,14 +33,13 @@
     });
 </script>
 
-{% if site.search %}
 <script>
     SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('results-container'),
         json: '{{ site.url}}/dist/json/search.json',
         searchResultTemplate: '<li><article><a href="{url}">{title} <span class="entry-date"><time datetime="{date}">{shortdate}</time></span></a></article></li>',
-        noResultsText: '<p>Nothing found.</p>',
+        noResultsText: '<p>啥也没找到，试试输入别的词。。</p>',
         limit: 10,
         fuzzy: false,
         exclude: ['Welcome']
@@ -68,7 +67,6 @@
         });
     })(jQuery, window);
 </script>
-{% endif %}
 
 <!-- cnzz -->
 <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan style='display: none;' id='cnzz_stat_icon_1260412462'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1260412462' type='text/javascript'%3E%3C/script%3E"));</script>

@@ -3,8 +3,8 @@ layout: post
 title: 'Javascript定时器如何工作（译）'
 date: 2016-12-26
 author: SSH
-categories: [front]
-tags: [Javascript, Translate]
+categories: [Javascript]
+tags: [Translate]
 excerpt: 最近公司开始组织分享会，吓得我赶紧准备准备，于是，我就找找资料终于决定把第一次的题目定为定时器那些事，本文就是在搜索资料中找到的一片有意思的文章，本文将告诉你JS定时器的在浏览器中的工作原理
 ---
 

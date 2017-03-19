@@ -1,19 +1,13 @@
 title: SSH
-description: SSH的个人博客
+description: 个人博客
 
 disqus_shortname: shortname
 # Assign a default image for your site's header and footer
 default_bg: default_bg.jpg
 search: true
 share: true
-# Turn on or off the fin animations in the header and footer
-triangleheader: true
-animated_fins: true
-# Specify the fin color in RGB value
 fin_color: "255,255,255"
-# Change url to your domain. Leave localhost server or blank when working locally.
 url: http://ssh.today
-# baseurl:           
 
 # Gems used
 gems:
@@ -35,7 +29,6 @@ jekyll-archives:
     tag: '/archive/tag/:name/'
     category: '/archive/category/:name/'
 
-# Owner/author information
 author:
   name: shenshaohui
   picture: wukong.jpg
@@ -64,7 +57,6 @@ sitemap:
     include_posts:
         - "/index.html"
 
-# http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone: Asia/Shanghai
 future: true
 markdown: kramdown
@@ -72,7 +64,6 @@ highlighter: rouge
 paginate: 6
 paginate_path: "/blog/:num/"
 
-# https://github.com/mojombo/jekyll/wiki/Permalinks
 collections:
   posts:
     output: true
