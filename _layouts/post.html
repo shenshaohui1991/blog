@@ -69,8 +69,8 @@
             query.limit(10);
             query
                 .find()
-                .then(function (results) {
-                    var counter;
+                .then(function (json) {
+                    var counter, results = json.results;
 
                     if (results.length > 0) {
                         counter = results[0];
