@@ -200,7 +200,7 @@ obj.waitAndShout();
 
 在解释上面问题的答案之前我们先来了解一下定时器的工作原理，这里将用引用[How JavaScript Timers Work](http://ejohn.org/blog/how-javascript-timers-work/)中的例子来解释定时器的工作原理，该图为一个简单版的原理图。
 
-![定时器](http://p7.yx-s.com/d/inn/74622874/Timers.png)
+![定时器](http://p0.qhimg.com/t01073609b4aa2c7d6c.png)
 
 上图中，左侧数字代表时间，单位毫秒；左侧文字代表某一个操作完成后，浏览器去询问当前队列中存在哪些正在等待执行的操作；蓝色方块表示正在执行的代码块；右侧文字代表在代码运行过程中，出现哪些异步事件。该图大致流程如下：
 
