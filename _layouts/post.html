@@ -61,40 +61,38 @@
 
     <script>
         $(function () {
-            var Counter = AV.Object.extend("Counter"),
-                url = location.origin + location.pathname,
+            var url = location.origin + location.pathname,
                 title = $('.post-header .post-title').text().trim(),
-                query = new AV.Query(Counter);
+                query = new AV.Query('Counter');
 
-            query.equalTo("url", url);
-            query.find({
-                success: function (results) {
+            query.equalTo('url', url);
+            query.limit(10);
+            query
+                .find()
+                .then(function (results) {
                     var counter;
 
                     if (results.length > 0) {
                         counter = results[0];
                         counter.fetchWhenSave(true);
                         counter.increment("time");
-                        counter.save();
                     } else {
                         counter = new Counter();
                         counter.set("title", title);
                         counter.set("url", url);
                         counter.set("time", 1);
-                        counter.save(null, {
-                            success: function () {
-                                console.log('add 1 times');
-                            },
-                            error: function () {
-                                console.log('fail to add 1 times');
-                            }
-                        });
                     }
-                },
-                error: function (error) {
+
+                    counter
+                        .save()
+                        .then(function () {
+                            console.log('add 1 times');
+                        }, function () {
+                            console.log('fail to add 1 times');
+                        });
+                }, function (error) {
                     console.log('Error:' + error.code + " " + error.message);
-                }
-            });
+                });
         });
     </script>
 </body>
