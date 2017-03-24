@@ -61,7 +61,8 @@
 
     <script>
         $(function () {
-            var url = location.origin + location.pathname,
+            var Counter = AV.Object.extend('Counter'),
+                url = location.origin + location.pathname,
                 title = $('.post-header .post-title').text().trim(),
                 query = new AV.Query('Counter');
 
@@ -69,10 +70,10 @@
             query.limit(10);
             query
                 .find()
-                .then(function (json) {
-                    var counter, results = json.results;
+                .then(function (results) {
+                    var counter;
 
-                    if (results.length > 0) {
+                    if (results && results.length > 0) {
                         counter = results[0];
                         counter.fetchWhenSave(true);
                         counter.increment("time");
