@@ -25,6 +25,7 @@
                                 {% endunless %}
                                 {% endfor %}
                             </span>
+                            &nbsp;<span class="js-read">0</span>&nbsp;read
                         </div>
                     </header>
 
@@ -76,13 +77,15 @@
                     if (results && results.length > 0) {
                         counter = results[0];
                         counter.fetchWhenSave(true);
-                        counter.increment("time");
+                        counter.increment("times");
                     } else {
                         counter = new Counter();
                         counter.set("title", title);
                         counter.set("url", url);
-                        counter.set("time", 1);
+                        counter.set("times", 1);
                     }
+
+                    $('.js-read').text(counter.get('times'));
 
                     counter
                         .save()
