@@ -120,7 +120,7 @@ Page({
 
 {% raw %}
 ```javascript
-<!-- 列表渲染 -->
+/* 列表渲染 */
 <view wx:for="{{array}}">"{{item}}"</view>
 ```
 {% endraw %}
@@ -131,7 +131,7 @@ Page({
 
 {% raw %}
 ```javascript
-<!-- 条件渲染 -->
+/* 条件渲染 */
 <view wx:if="{{condition}}">HAHA</view>
 ```
 {% endraw %}
@@ -142,7 +142,7 @@ WXML提供语法简洁的前端模版，只需要你通过`template`中的`is`�
 
 {% raw %}
 ```javascript
-<!-- 模板 -->
+/* 模板 */
 <template name="msgItem">
   <view>
     <text> {{msg}} </text>
@@ -150,7 +150,7 @@ WXML提供语法简洁的前端模版，只需要你通过`template`中的`is`�
   </view>
 </template>
 
-<!-- 使用模版 -->
+/* 使用模版 */
 <template is="msgItem" data="{{...item}}"/>
 ```
 {% endraw %}
@@ -166,33 +166,33 @@ WXML提供语法简洁的前端模版，只需要你通过`template`中的`is`�
 
 {% raw %}
 ```javascript
-<!-- import -->
-<!-- A.wxml -->
+/* import */
+/* A.wxml */
 <template name="A">
   <text> A template </text>
 </template>
 
-<!-- B.wxml -->
+/* B.wxml */
 <import src="a.wxml"/>
 <template name="B">
   <text> B template </text>
 </template>
 
-<!-- C.wxml -->
+/* C.wxml */
 <import src="b.wxml"/>
 <template is="A"/>  <!-- Error! Can not use tempalte when not import A. -->
 <template is="B"/>
 
-<!-- include -->
-<!-- index.wxml -->
+/* include */
+/* index.wxml */
 <include src="header.wxml"/>
 <view> body </view>
 <include src="footer.wxml"/>
 
-<!-- header.wxml -->
+/* header.wxml */
 <view> header </view>
 
-<!-- footer.wxml -->
+/* footer.wxml */
 <view> footer </view>
 ```
 {% endraw %}
