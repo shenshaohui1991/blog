@@ -1,4 +1,433 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-19T04:29:31+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>个人博客</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">项目填坑记-cookie</title><link href="http://localhost:4000/blog/wtf-cookie" rel="alternate" type="text/html" title="项目填坑记-cookie" /><published>2017-03-18T00:00:00+00:00</published><updated>2017-03-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/wtf-cookie</id><content type="html" xml:base="http://localhost:4000/blog/wtf-cookie">&lt;p&gt;前段时间开发了一个用户登录的模块，需求很简单，用户输入手机号和验证码，我们就会返回给用户一套身份信息并保存在cookie里面。so easy，于是就有以下代码：&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-05-08T00:29:18+00:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>个人博客</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">快速了解小程序</title><link href="http://localhost:4000/blog/hello-min-app" rel="alternate" type="text/html" title="快速了解小程序" /><published>2017-05-08T00:00:00+00:00</published><updated>2017-05-08T00:00:00+00:00</updated><id>http://localhost:4000/blog/hello-min-app</id><content type="html" xml:base="http://localhost:4000/blog/hello-min-app">&lt;h2 id=&quot;section&quot;&gt;什么是小程序？&lt;/h2&gt;
+
+&lt;p&gt;先引用小龙哥的一句话来看看啥是小程序？&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;小程序是一种不需要下载安装即可使用的应用，它实现了应用“触手可及”的梦想，用户扫一扫或者搜一下即可打开应用。也体现了“用完即走”的理念，用户不用关心是否安装太多应用的问题。应用将无处不在，随时可用，但又无需安装卸载。   - Allen Zhang（张小龙）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;从程序猿的角度来说：小程序就是依赖于微信平台，利用小程序框架提供视图层描述语言&lt;code class=&quot;highlighter-rouge&quot;&gt;WXML&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;WXSS&lt;/code&gt;，以及&lt;code class=&quot;highlighter-rouge&quot;&gt;JavaScript&lt;/code&gt;来实现一个具备原生体验的Web应用。微信小程序相当于基于微信平台造了一个&lt;code class=&quot;highlighter-rouge&quot;&gt;React Native&lt;/code&gt;的轮子，通过JS的跨平台性实现了一套代码跨平台部署、运行。&lt;/p&gt;
+
+&lt;h2 id=&quot;hello-world&quot;&gt;Hello World&lt;/h2&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;工程结构&lt;/h3&gt;
+
+&lt;p&gt;首先，我们先通过微信web开发者工具新建一个项目，项目建成后会自动生成下列文件。下文全部围绕这个新建的项目来简单的介绍一下小程序。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://opl3e6e3n.bkt.clouddn.com/file_structure.png&quot; alt=&quot;工程结构&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以看出整个工程包括&lt;code class=&quot;highlighter-rouge&quot;&gt;app.js&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;app.json&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;app.wxss&lt;/code&gt;，以及&lt;code class=&quot;highlighter-rouge&quot;&gt;pages&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;utils&lt;/code&gt;目录，后面我们一次介绍各个文件和目录的作用。&lt;/p&gt;
+
+&lt;p&gt;其中&lt;code class=&quot;highlighter-rouge&quot;&gt;app.js&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;app.json&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;app.wxss&lt;/code&gt;最为重要，他们为对整个小程序进行全局配置。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app.js&lt;/code&gt;，声明小程序的整个生命周期、定义全局变量&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app.json&lt;/code&gt;，对整个小程序起全局配置的作用，规定小程序包括哪些页面、窗口的样式、底部tab栏的样式、网络超时事件、是否开启debug模式&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app.wxss&lt;/code&gt;，这里的&lt;code class=&quot;highlighter-rouge&quot;&gt;wxss&lt;/code&gt;类似于CSS，只不过是针对微信做了一部分拓展，定义了小程序的全局样式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;而&lt;code class=&quot;highlighter-rouge&quot;&gt;pages&lt;/code&gt;目录下面每一子目录都代表了小程序中的一个页面，而每一个页面都由&lt;code class=&quot;highlighter-rouge&quot;&gt;*.js&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;*.json&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;*.wxml&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;*.wxss&lt;/code&gt;组成，这里又出现了一个新的后缀&lt;code class=&quot;highlighter-rouge&quot;&gt;wxml&lt;/code&gt;，同时再次出现了&lt;code class=&quot;highlighter-rouge&quot;&gt;wxss&lt;/code&gt;，后面会解释他俩是啥用的。先解释一下，页面中的这四种文件是干啥用的？&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*.js&lt;/code&gt;，处理页面的逻辑&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*.json&lt;/code&gt;，处理页面的配置&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*.wxml&lt;/code&gt;，处理页面的结构&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*.wxss&lt;/code&gt;，处理页面的样式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;为了减少配置同一个页面目录中的文件都需要以同一个名字命名，例如个人习惯将所有页面目录下面的文件都用&lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt;命名。&lt;/p&gt;
+
+&lt;h3 id=&quot;json&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*.json&lt;/code&gt;中我可以配置什么？&lt;/h3&gt;
+
+&lt;p&gt;上面有提到&lt;code class=&quot;highlighter-rouge&quot;&gt;app.json&lt;/code&gt;可以配置页面的全局配置，而pages目录下&lt;code class=&quot;highlighter-rouge&quot;&gt;*.json&lt;/code&gt;则可以配置对应页面&lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt;选项（窗口的样式），那么我们到底可以配置哪些具体内容呢？&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// app.json&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 定义小程序中有哪些页面&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;pages&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;pages/index/index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;pages/logs/logs&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 窗口的样式&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;window&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;backgroundTextStyle&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;light&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;navigationBarBackgroundColor&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;#fff&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;navigationBarTitleText&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Demo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;navigationBarTextStyle&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;black&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;enablePullDownRefresh&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 底部tab的内容和样式&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;tabBar&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// tab的具体内容&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;list&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+              &lt;span class=&quot;s2&quot;&gt;&quot;pagePath&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pages/index/index&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;首页&quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; 
+            &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+              &lt;span class=&quot;s2&quot;&gt;&quot;pagePath&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;pages/logs/logs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+              &lt;span class=&quot;s2&quot;&gt;&quot;text&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;日志&quot;&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 设置不同请求的网络超时&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;networkTimeout&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;request&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;downloadFile&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10000&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 是否开启debug模式，开启debug模式之后可以在微信开发者工具的控制台中看到整个APP，以及每个页面的生命周期日志&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;debug&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;常用的配置都在这里了，根据配置的命名其实已经可以猜个大概啦，如果猜不出来可以参考文档&lt;a href=&quot;https://mp.weixin.qq.com/debug/wxadoc/dev/framework/config.html&quot;&gt;“配置”&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;wxml&quot;&gt;什么是&lt;code class=&quot;highlighter-rouge&quot;&gt;wxml&lt;/code&gt;？&lt;/h3&gt;
+
+&lt;p&gt;工程中出现了一个新的后缀&lt;code class=&quot;highlighter-rouge&quot;&gt;*.wxml&lt;/code&gt;，而WXML(Weixin Markup Language)是微信小程序框架设计出来的一种标签语言，你可以直接把他理解成是微信定义了一套带有特殊事件、效果、属性的标签，但本质上和&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;a&amp;gt;&lt;/code&gt;等相似。值得注意的是，在&lt;code class=&quot;highlighter-rouge&quot;&gt;wxml&lt;/code&gt;中也可以使用HTML的标签。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;数据绑定&lt;/h4&gt;
+
+&lt;p&gt;WXML中还是实现了现在比较流行的数据绑定的功能，省去了我们操作DOM元素的烦恼。WXML使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;Mustache&lt;/code&gt;语法，即通过2个花括号来包裹某一个属性，通过修改调用JS来修改对象的属性，继而修改页面中dom元素的值。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/view&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;Page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Hello Mina!'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;列表渲染&lt;/h4&gt;
+
+&lt;p&gt;而除了提供数据绑定，它还提供了列表渲染、条件渲染、模板、事件、引用等功能。不过语法都比较简洁，有基础的同学基本上都可以快速看懂。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;列表渲染&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;view&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wx&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{array}}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{item}}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/view&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;条件渲染&lt;/h4&gt;
+
+&lt;p&gt;在处理条件渲染时需要注意，小程序中所有的条件判断表达式、&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;false&lt;/code&gt;都需要使用``包裹，否则会按照字符串来处理。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;条件渲染&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;view&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;wx&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{condition}}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;HAHA&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/view&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-5&quot;&gt;模版&lt;/h4&gt;
+
+&lt;p&gt;WXML提供语法简洁的前端模版，只需要你通过&lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;中的&lt;code class=&quot;highlighter-rouge&quot;&gt;is&lt;/code&gt;属性来制定需要使用的模版，并传入需要的参数就可以开始渲染了。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;模板&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;msgItem&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;msg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;Time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;time&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/view&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/template&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;使用模版&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;msgItem&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{...item}}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-6&quot;&gt;引用&lt;/h4&gt;
+
+&lt;p&gt;小程序提供了两种不同方式的引用&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;include&lt;/code&gt;，二者的区别在于：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;会引用目标文件中定义的 template&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;include&lt;/code&gt;会将目标文件中除了&lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;外的所有内容拷贝到&lt;code class=&quot;highlighter-rouge&quot;&gt;include&lt;/code&gt;定义的位置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;还需要注意的是&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;存在作用域的概念，即它只会引用目标文件中的&lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;，不会引用目标文件中&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;的文件。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wxml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/template&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wxml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;a.wxml&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/template&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wxml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;b.wxml&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Can&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;tempalte&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;when&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wxml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;header.wxml&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/view&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;footer.wxml&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wxml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;header&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/view&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!--&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;footer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;wxml&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;footer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/view&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-7&quot;&gt;事件&lt;/h4&gt;
+
+&lt;p&gt;这里单独说一下WXML中所提到的事件，小程序框架通过事件来保持视图层和逻辑层的通讯，例如，用户进行点击行为，点击行为触发了点击事件，进而触发逻辑层中所绑定的函数。&lt;/p&gt;
+
+&lt;p&gt;和我们在浏览器中开发JS有区别的是，这里的事件分两种：冒泡事件和非冒泡事件。其中冒泡事件包括&lt;code class=&quot;highlighter-rouge&quot;&gt;touchstart&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;touchmove&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;touchcancel&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;touchend&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;tap&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;longtap&lt;/code&gt;，其余未提及的事件或者自定义事件均为非冒泡事件。&lt;/p&gt;
+
+&lt;p&gt;而在标签绑定事件函数存在两种方式&lt;code class=&quot;highlighter-rouge&quot;&gt;bind*&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;catch*&lt;/code&gt;，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;bind*&lt;/code&gt;的事件绑定不会阻止冒泡事件向上冒泡，&lt;code class=&quot;highlighter-rouge&quot;&gt;catch*&lt;/code&gt;则会阻止冒泡事件向上冒泡相当于直接在函数中执行&lt;code class=&quot;highlighter-rouge&quot;&gt;e.stopPropagation()&lt;/code&gt;来阻止事件冒泡。&lt;/p&gt;
+
+&lt;h3 id=&quot;wxss&quot;&gt;什么是&lt;code class=&quot;highlighter-rouge&quot;&gt;wxss&lt;/code&gt;？&lt;/h3&gt;
+
+&lt;p&gt;WXSS(WeiXin Style Sheets)是一套样式语言，我们可以简单理解成&lt;strong&gt;CSS的一个拓展&lt;/strong&gt;，它增加了两个特性：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;尺寸单位&lt;/li&gt;
+  &lt;li&gt;样式导入&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;在WXSS中引入了一个新的单位&lt;code class=&quot;highlighter-rouge&quot;&gt;rpx&lt;/code&gt;(responsive pixel)，根据屏幕宽度的不同&lt;code class=&quot;highlighter-rouge&quot;&gt;rpx&lt;/code&gt;代表的实际&lt;code class=&quot;highlighter-rouge&quot;&gt;px&lt;/code&gt;也不同。WXSS规定一个屏幕的宽度为&lt;code class=&quot;highlighter-rouge&quot;&gt;750rpx&lt;/code&gt;，750刚好是iphone6的物理宽度大小，也是目前大多数设计师出设计稿的标准宽度。也就是说当我们拿到设计稿的时候，我们不需要通过百分比、&lt;code class=&quot;highlighter-rouge&quot;&gt;rem&lt;/code&gt;，而是直接测量出设计稿上的像素大小并使用微信提供的&lt;code class=&quot;highlighter-rouge&quot;&gt;rpx&lt;/code&gt;就可以满足多屏适配的问题。&lt;/p&gt;
+
+&lt;p&gt;除了&lt;code class=&quot;highlighter-rouge&quot;&gt;rpx&lt;/code&gt;，WXSS还提供了目前大部分CSS预编译语言所提供的是样式导入，即将外联样式导入当当前文件中&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;/** common.wxss **/&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.small-p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;5px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;/** app.wxss **/&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;@import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&quot;common.wxss&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.middle-p&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;15px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;app&quot;&gt;App&lt;/h3&gt;
+&lt;p&gt;我们可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;App()&lt;/code&gt;来注册一个小程序，并指定他的生命周期。&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 监听小程序初始化，只会在小程序注册时调用，其中返回值中包括了`path`小程序路径、`query`打开小程序的query、`scene`场景值&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onLaunch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 监听小程序显示，当小程序启动或者从前台进入后台时会调用该方法&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onShow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 监听小程序隐藏，当小程序从前台进入后台时调用&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onHide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 监听小程序的错误，当小程序发生错误时触发，类似`window.onerror`&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// 全局对象&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;globalData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// app本身是一个单例在一个程序中只有一个，所以在其它文件中如果想要使用APP对象需要通过下列方法调用&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;appInstance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://opl3e6e3n.bkt.clouddn.com/life_app.png&quot; alt=&quot;小程序的生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里所谓的前台、后台引用文档里面的话来说就是：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;当用户点击左上角关闭，或者按了设备 Home 键离开微信，小程序并没有直接销毁，而是进入了后台；当再次进入微信或再次打开小程序，又会从后台进入前台。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;不难看出和APP所谓的前台后台很类似。&lt;/p&gt;
+
+&lt;p&gt;在这里我们还需要注意的一点就是&lt;strong&gt;场景值&lt;/strong&gt;，场景值应该是微信所独有的一个概念，即你通过什么的方式进入小程序，你可以是通过“发现栏小程序主入口”，也可以是通过“单人聊天窗口”等等途径进入不同的方式都对应这个一个固定的值，这样你就可以根据不同的场景值对用户作区分、统计，亦或是功能上的区分，这些完全可以根据你的应用场景来决定。具体场景值可以参考文档&lt;a href=&quot;https://mp.weixin.qq.com/debug/wxadoc/dev/framework/app-service/scene.html&quot;&gt;“场景值”&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;page&quot;&gt;Page&lt;/h3&gt;
+
+&lt;p&gt;和注册小程序相似，注册页面可以通过&lt;code class=&quot;highlighter-rouge&quot;&gt;Page()&lt;/code&gt;去指定页面的生命周期、事件函数以及初始化数据&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;Page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// 初始化的页面数据&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;初始化数据&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 页面加载时触发，这里的加载指的是第一次加载&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onLoad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 页面渲染完成时触发&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onReady&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 页面显示时触发，每次打开都会触发&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onShow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 页面隐藏时触发&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onHide&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 页面卸载时触发&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onUnload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 用户下拉时触发&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onPullDownRefresh&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 用户上拉触底时触发&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onReachBottom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 点击分享后触发&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;onShareAppMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 事件绑定函数&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;viewTap&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// 修改页面数据&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'啦啦啦啦啦'&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    
+    &lt;span class=&quot;c1&quot;&gt;// 自定义的对象&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;customData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'MINA'&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://opl3e6e3n.bkt.clouddn.com/life_page.png&quot; alt=&quot;页面的生命周期&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;上图为页面生命周期的一个描述，其中&lt;code class=&quot;highlighter-rouge&quot;&gt;onLoad&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;onUnload&lt;/code&gt;对应代表了页面的生命开始和结束，页面的生命周期中&lt;code class=&quot;highlighter-rouge&quot;&gt;onLoad&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;onUnload&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;onReady&lt;/code&gt;只会调用一次，&lt;code class=&quot;highlighter-rouge&quot;&gt;onShow&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;onHide&lt;/code&gt;是可以多次调用的。&lt;/p&gt;
+
+&lt;p&gt;小程序中所有的页面都由框架自身维护，而框架则以栈的形式去管理所有的页面，下表为路由状态、页面的生命周期、页面栈的表现三者的关系&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;路由方式&lt;/th&gt;
+      &lt;th&gt;触发时机&lt;/th&gt;
+      &lt;th&gt;页面栈表现&lt;/th&gt;
+      &lt;th&gt;路由前页面&lt;/th&gt;
+      &lt;th&gt;路由后页面&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;初始化&lt;/td&gt;
+      &lt;td&gt;在小程序中打开第一个页面&lt;/td&gt;
+      &lt;td&gt;新页面入栈&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;onLoad,onShow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;打开新页面&lt;/td&gt;
+      &lt;td&gt;调用&lt;code class=&quot;highlighter-rouge&quot;&gt;wx.navigateTo&lt;/code&gt;或者使用&lt;code class=&quot;highlighter-rouge&quot;&gt;navigator&lt;/code&gt;组件跳转方式为&lt;code class=&quot;highlighter-rouge&quot;&gt;navigateTo&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;新页面入栈&lt;/td&gt;
+      &lt;td&gt;onHide&lt;/td&gt;
+      &lt;td&gt;onLoad,onShow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;页面重定向&lt;/td&gt;
+      &lt;td&gt;调用&lt;code class=&quot;highlighter-rouge&quot;&gt;wx.redirectTo&lt;/code&gt;或者使用&lt;code class=&quot;highlighter-rouge&quot;&gt;navigator&lt;/code&gt;组件跳转方式为&lt;code class=&quot;highlighter-rouge&quot;&gt;redirectTo&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;当前页面出栈，新页面入栈&lt;/td&gt;
+      &lt;td&gt;onUnload&lt;/td&gt;
+      &lt;td&gt;onLoad,onShow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;页面返回&lt;/td&gt;
+      &lt;td&gt;调用&lt;code class=&quot;highlighter-rouge&quot;&gt;wx.navigateBack&lt;/code&gt;或者使用&lt;code class=&quot;highlighter-rouge&quot;&gt;navigator&lt;/code&gt;组件跳转类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;navigateBack&lt;/code&gt;或者按返回键&lt;/td&gt;
+      &lt;td&gt;页面不断出栈，直到找到目标页面&lt;/td&gt;
+      &lt;td&gt;onUnload&lt;/td&gt;
+      &lt;td&gt;onShow&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Tab切换&lt;/td&gt;
+      &lt;td&gt;调用&lt;code class=&quot;highlighter-rouge&quot;&gt;wx.switchTab&lt;/code&gt;或者使用&lt;code class=&quot;highlighter-rouge&quot;&gt;navigator&lt;/code&gt;组件跳转类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;switchTab&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;页面全部出栈，只留下访问的tab页&lt;/td&gt;
+      &lt;td&gt;-&lt;/td&gt;
+      &lt;td&gt;根据跳转页面的不同而不同&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;重加载&lt;/td&gt;
+      &lt;td&gt;调用&lt;code class=&quot;highlighter-rouge&quot;&gt;wx.reLaunch&lt;/code&gt;或者使用&lt;code class=&quot;highlighter-rouge&quot;&gt;navigator&lt;/code&gt;组件跳转类型为&lt;code class=&quot;highlighter-rouge&quot;&gt;reLaunch&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;页面全部出栈，只留下新的页面&lt;/td&gt;
+      &lt;td&gt;onUnload&lt;/td&gt;
+      &lt;td&gt;onLoad,onShow&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;当然，如果你觉得上面的表述比较麻烦，你也可以直接在微信开发者工具中看到当前页面栈的变化情况。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://opl3e6e3n.bkt.clouddn.com/20170508_web_stack.png&quot; alt=&quot;微信开发者工具-页面栈&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;框架也为我们提供了获取页面栈的方法，通过&lt;code class=&quot;highlighter-rouge&quot;&gt;getCurrentPages()&lt;/code&gt;我们可以以数组的形式获得当前页面栈的实例，但是&lt;strong&gt;不要尝试修改页面栈&lt;/strong&gt;，可能会出现莫名其妙的错误。&lt;/p&gt;
+
+&lt;h3 id=&quot;section-8&quot;&gt;模块化&lt;/h3&gt;
+
+&lt;p&gt;以项目中的&lt;code class=&quot;highlighter-rouge&quot;&gt;utils/utils.js&lt;/code&gt;文件为例，它本身是一个普通工具类，采用了&lt;strong&gt;CommonJS&lt;/strong&gt;的规范将自身特定的函数暴露给外部使用&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// utils/utils.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;formatTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getFullYear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMonth&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;hour&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getHours&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;minute&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getMinutes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;second&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getSeconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;year&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;month&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;day&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;formatNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hour&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;minute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;second&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;].&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;formatNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;join&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;':'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;formatNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'0'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;n&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;formatTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;formatTime&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// logs/logs.js&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// 通过require去引用utils.js&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;util&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'../../utils/util.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在小程序中，基本上一个文件就是一个模块，并通过&lt;code class=&quot;highlighter-rouge&quot;&gt;module.exports&lt;/code&gt;或者&lt;code class=&quot;highlighter-rouge&quot;&gt;exports&lt;/code&gt;将想要暴露的对象、函数暴露出去。&lt;/p&gt;
+
+&lt;h3 id=&quot;api--&quot;&gt;api 和 组件&lt;/h3&gt;
+
+&lt;p&gt;前面在说&lt;code class=&quot;highlighter-rouge&quot;&gt;WXML&lt;/code&gt;的时候，又提到小程序框架为我们提供了大量功能、风格和微信相似的原生组件相仿的标签，这些标签就是我们开发中要使用到的组件，下面大致浏览介绍一下&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://opl3e6e3n.bkt.clouddn.com/all_components.png&quot; alt=&quot;组件&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;除了这些功能丰富的组件外，微信还提供了丰富的微信API来调起微信&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://opl3e6e3n.bkt.clouddn.com/all_apis.png&quot; alt=&quot;API&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;这里只做一个大概介绍，具体内容请参考文档&lt;a href=&quot;https://mp.weixin.qq.com/debug/wxadoc/dev/component/&quot;&gt;“组件”&lt;/a&gt;和&lt;a href=&quot;https://mp.weixin.qq.com/debug/wxadoc/dev/api/&quot;&gt;“API”&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section-9&quot;&gt;需要注意的&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在小程序中无法使用&lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;document&lt;/code&gt;，因为小程序运行在&lt;code class=&quot;highlighter-rouge&quot;&gt;JsCore&lt;/code&gt;中，它里面是不包含&lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;document&lt;/code&gt;的&lt;/li&gt;
+  &lt;li&gt;在小程序中无法使用&lt;code class=&quot;highlighter-rouge&quot;&gt;jquery&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;zepto&lt;/code&gt;，因为&lt;code class=&quot;highlighter-rouge&quot;&gt;jquery&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;zepto&lt;/code&gt;中使用了&lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;document&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;background-image不能使用本地资源，只能使用网络资源或者BASE64转码&lt;/li&gt;
+  &lt;li&gt;小程序只能同时打开5个页面，超过5个时，&lt;code class=&quot;highlighter-rouge&quot;&gt;wx.navigateTo&lt;/code&gt;就不能正常打开了&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>SSH</name></author><category term="小程序" /><summary type="html">通过HelloWorld带你快速了解什么是小程序</summary></entry><entry><title type="html">项目填坑记-cookie</title><link href="http://localhost:4000/blog/wtf-cookie" rel="alternate" type="text/html" title="项目填坑记-cookie" /><published>2017-03-18T00:00:00+00:00</published><updated>2017-03-18T00:00:00+00:00</updated><id>http://localhost:4000/blog/wtf-cookie</id><content type="html" xml:base="http://localhost:4000/blog/wtf-cookie">&lt;p&gt;前段时间开发了一个用户登录的模块，需求很简单，用户输入手机号和验证码，我们就会返回给用户一套身份信息并保存在cookie里面。so easy，于是就有以下代码：&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 大致意思如下，并非真实模块中的代码&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cookie&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'token=xxxxxxxx;domain=xxx.com;path=/;expires=xxxx'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -460,7 +889,7 @@
 
 &lt;p&gt;在解释上面问题的答案之前我们先来了解一下定时器的工作原理，这里将用引用&lt;a href=&quot;http://ejohn.org/blog/how-javascript-timers-work/&quot;&gt;How JavaScript Timers Work&lt;/a&gt;中的例子来解释定时器的工作原理，该图为一个简单版的原理图。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;http://p7.yx-s.com/d/inn/74622874/Timers.png&quot; alt=&quot;定时器&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://p0.qhimg.com/t01073609b4aa2c7d6c.png&quot; alt=&quot;定时器&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;上图中，左侧数字代表时间，单位毫秒；左侧文字代表某一个操作完成后，浏览器去询问当前队列中存在哪些正在等待执行的操作；蓝色方块表示正在执行的代码块；右侧文字代表在代码运行过程中，出现哪些异步事件。该图大致流程如下：&lt;/p&gt;
 
@@ -1838,20 +2267,4 @@ npm install node-fetch request --save
     &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;译文地址:&lt;a href=&quot;http://ssh.today&quot;&gt;ssh.today&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Translate" /><summary type="html">本文是一片关于如何让一个初学者迅速掌握Promise的文章，我也是在学习了Promise之后，无意中发现了这篇文章，发现自己对promise的理解还有很多遗漏的地方，于是就把它翻译了一遍。</summary></entry><entry><title type="html">移动端H5的那些坑</title><link href="http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng" rel="alternate" type="text/html" title="移动端H5的那些坑" /><published>2016-09-24T00:00:00+00:00</published><updated>2016-09-24T00:00:00+00:00</updated><id>http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng</id><content type="html" xml:base="http://localhost:4000/blog/yi-dong-duan-de-na-xie-keng">&lt;h1 id=&quot;section&quot;&gt;背景&lt;/h1&gt;
-&lt;p&gt;最近被安排去开发一个移动端H5页面，移动端屏幕尺寸、系统版本的碎片化，导致移动端开发坑相当多啊。&lt;/p&gt;
-
-&lt;h1 id=&quot;section-1&quot;&gt;多屏适配&lt;/h1&gt;
-&lt;p&gt;目前已经&lt;/p&gt;
-
-&lt;h1 id=&quot;line-height&quot;&gt;line-height失效&lt;/h1&gt;
-&lt;p&gt;在PC端经常会设置&lt;code class=&quot;highlighter-rouge&quot;&gt;height&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;line-height&lt;/code&gt;相同的大小来保持当行字体居中，项目中也有很多要求单行字体垂直剧中的情况，很自然会想到用&lt;code class=&quot;highlighter-rouge&quot;&gt;line-height&lt;/code&gt;，在Chrome上模拟出来的效果简直完美，但是，在移动端的表现真的很差，在多台手机都会出现文字偏上的情况。
-解决办法：可以尝试使用&lt;code class=&quot;highlighter-rouge&quot;&gt;padding&lt;/code&gt;来撑起高度，同时保证&lt;code class=&quot;highlighter-rouge&quot;&gt;padding-top&lt;/code&gt;比&lt;code class=&quot;highlighter-rouge&quot;&gt;padding-bottom&lt;/code&gt;多1px来保持大致居中。&lt;/p&gt;
-
-&lt;h1 id=&quot;vertical-align&quot;&gt;vertical-align&lt;/h1&gt;
-
-&lt;h1 id=&quot;https&quot;&gt;https&lt;/h1&gt;
-
-&lt;h1 id=&quot;dns-prefetch&quot;&gt;dns-prefetch&lt;/h1&gt;
-
-&lt;h1 id=&quot;flex&quot;&gt;flex&lt;/h1&gt;</content><author><name>shenshaohui</name><email>443939294@qq.com</email></author><category term="html" /><category term="js" /><category term="css" /><summary type="html">最近被安排去开发一个移动端H5页面，移动端屏幕尺寸、系统版本的碎片化，导致移动端开发坑相当多啊，于是就写了这篇文章来记录自己走过的坑。</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Translate" /><summary type="html">本文是一片关于如何让一个初学者迅速掌握Promise的文章，我也是在学习了Promise之后，无意中发现了这篇文章，发现自己对promise的理解还有很多遗漏的地方，于是就把它翻译了一遍。</summary></entry></feed>

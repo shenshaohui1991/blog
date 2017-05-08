@@ -4,6 +4,7 @@
   "description": "南来的北往的走进来看一下看吧，[点我！戳我！](http://ssh.today)",
   "main": "index.js",
   "scripts": {
+    "build": "bundle exec jekyll server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
