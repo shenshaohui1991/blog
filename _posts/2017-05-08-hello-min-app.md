@@ -320,8 +320,6 @@ Page({
 
 小程序中所有的页面都由框架自身维护，而框架则以栈的形式去管理所有的页面，下表为路由状态、页面的生命周期、页面栈的表现三者的关系
 
-{% raw %}<div class="table-responsive">{% endraw %}
-
 路由方式 | 触发时机 | 页面栈表现 | 路由前页面 | 路由后页面
 ---|---|---|---|---
 初始化 | 在小程序中打开第一个页面 | 新页面入栈 | - | onLoad,onShow
@@ -330,8 +328,6 @@ Page({
 页面返回 | 调用`wx.navigateBack`或者使用`navigator`组件跳转类型为`navigateBack`或者按返回键 | 页面不断出栈，直到找到目标页面 | onUnload | onShow
 Tab切换 | 调用`wx.switchTab`或者使用`navigator`组件跳转类型为`switchTab` | 页面全部出栈，只留下访问的tab页 | - | 根据跳转页面的不同而不同
 重加载 | 调用`wx.reLaunch`或者使用`navigator`组件跳转类型为`reLaunch` | 页面全部出栈，只留下新的页面 | onUnload | onLoad,onShow
-
-{% raw %}</div>{% endraw %}
 
 当然，如果你觉得上面的表述比较麻烦，你也可以直接在微信开发者工具中看到当前页面栈的变化情况。
 
