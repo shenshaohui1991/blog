@@ -4,6 +4,7 @@
 
 ### JS
 
++ [JsBridge介绍](http://ssh.today/blog/jsbridge)
 + [项目填坑记-cookie](http://ssh.today/blog/wtf-cookie)
 + [Javascript定时器那些事儿](http://ssh.today/blog/something-about-js-timer)
 + [ES6学习笔记1](http://ssh.today/blog/learning-es6-notes-1)
