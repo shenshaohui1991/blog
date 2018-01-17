@@ -19,13 +19,14 @@ http协议(HyperText Transfer Protocol，超文本传输协议)是一种基于tc
 ### URL
 URL(Uniform Resource Locator 统一资源定位符)是对互联网上资源的位置的一种简洁表示方式，一般格式如下：
 
-```
+```text
 协议://服务器名:端口/路径/文件名
 ```
 
 ### 请求方法
 
 HTTP1.0定义了三种请求方法：GET, POST 和 HEAD方法。
+
 HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。
 
 + GET: 请求指定的页面信息，并返回实体主体。
@@ -64,7 +65,7 @@ http1.0 和 http1.1的区别：
 
 + 缓存处理，http1.1新增了entity tag、if-unmodified-since、if-match等控制混存的头
 + 带宽优化 & 网络连接使用，
-+ 错误通知管理，http1.1新增了24个错误状态码，406()、408()、410()
++ 错误通知管理，http1.1新增了24个错误状态码，406(不接受)、408(请求超时)、410(已删除)
 + 长链接，http1.1默认开启Connenction: keep-alive，利用一个tcp链接传送多个http请求和相应，减少建立、关闭链接时的耗时
 
 http1.1可能出现的问题：
@@ -88,9 +89,11 @@ http2.0新增的功能：
 + ETags（http1.1），服务器对于一个资源文件生成的唯一标示，浏览器向服务端发送请求并通过`If-None-Match`字段将`etags`发送给服务器，如果匹配则返回304，不匹配则返回请求数据和200
 
 expires和cache-control属于强缓存，发现资源没有过期就**不会**向服务端发送请求
+
 last-modified和etags属于弱缓存，每次都会向服务端发送请求判断资源是否改变，即无法避免的304请求
 
 手动刷新页面：浏览器会认为缓存已过期，则在请求中增加`Cache-Control: max-age=0`，向服务端查询文件是否有更新
+
 强制刷新：浏览器会直接忽略本地缓存，在请求中增加`Cache-Control: no-cache`，则一定会向服务端发送请求
 
 |                         | Expires/Cache-Control | Last-Modified/Etag |
