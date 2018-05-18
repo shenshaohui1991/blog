@@ -14,6 +14,10 @@
 + [ES6学习笔记3](http://ssh.today/blog/learning-es6-notes-3)
 + [在Windows下开发ReactNative程序](http://ssh.today/blog/code-react-native-in-windows)
 
+### CSS
+
++ [CSS Animation学习笔记](http://ssh.today/blog/css-animation)
+
 ### 翻译
 
 + [Electron简介（译）](http://ssh.today/blog/essential-electron)
