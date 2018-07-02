@@ -34,8 +34,8 @@ animation: slideIn 3s linear 1s infinite reverse both running;
 #### steps(n, start、end)
 
 > 看图说话，steps就是把动画分部执行的一个函数，其值氛围如下两种情况：
-> - `steps(n,start)`表示动画被分成N步，动画一开始就直接移动到1/n帧
-> - `steps(n,end)`表示动画分成N步，动画一开始处于第0帧，然后持续1/n时间后，走到下一帧
+> + `steps(n,start)`表示动画被分成N步，动画一开始就直接移动到1/n帧
+> + `steps(n,end)`表示动画分成N步，动画一开始处于第0帧，然后持续1/n时间后，走到下一帧
 
 ![animation-step](http://opl3e6e3n.bkt.clouddn.com/animation-steps.jpg)
 

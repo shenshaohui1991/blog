@@ -1,4 +1,316 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-05-18T08:03:39+08:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>个人博客</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">CSS Animation学习笔记</title><link href="http://localhost:4000/blog/css-animation" rel="alternate" type="text/html" title="CSS Animation学习笔记" /><published>2018-05-18T00:00:00+08:00</published><updated>2018-05-18T00:00:00+08:00</updated><id>http://localhost:4000/blog/css-animation</id><content type="html" xml:base="http://localhost:4000/blog/css-animation">&lt;h2 id=&quot;animation&quot;&gt;简单介绍一下animation&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-07-02T23:02:39+08:00</updated><id>http://localhost:4000//</id><title type="html">SSH</title><subtitle>个人博客</subtitle><author><name>shenshaohui</name><email>443939294@qq.com</email></author><entry><title type="html">移动端网页性能优化CheckList</title><link href="http://localhost:4000/blog/mobile-h5-performance-optimization-checklist" rel="alternate" type="text/html" title="移动端网页性能优化CheckList" /><published>2018-07-02T00:00:00+08:00</published><updated>2018-07-02T00:00:00+08:00</updated><id>http://localhost:4000/blog/mobile-h5-performance-optimization-checklist</id><content type="html" xml:base="http://localhost:4000/blog/mobile-h5-performance-optimization-checklist">&lt;h2 id=&quot;section&quot;&gt;一、网络加载&lt;/h2&gt;
+
+&lt;p&gt;1、DNS预加载&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;通过dns-prefetch属性可以让浏览器提前解析资源或接口对应的服务器IP地址，避免在请求中发起DNS解析请求，节省请求时间&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、资源预加载&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;利用preload，prefetch，preconnect属性我们可以在&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;head&amp;gt;&lt;/code&gt;内部声明式的书写资源获取请求，提前加载非首屏但又较重要的资源，避免在满足首屏优先加载的情况下，反而忽略了其他次重要资源的加载&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、使用CDN资源，并且注意http缓存头的设定&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;HTTP缓存包括强缓存（Cache-Control，Expire）和协议缓存（Last-modified, Etag）两种。其中，协议缓存资源每次都会像服务端发送请求来判断资源是否过期，未过期则返回304，在网络极其卡顿的情况下，这个304请求有可能堵塞整个页面的资源加载&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;4、对JS资源按照模块和首屏需求进行优先加载，不需要的模块按需加载&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;移动端的网络资源有限，为了尽快让用户看到有意义的首屏，我们需要尽可能的保持首屏需要加载的资源越小越好&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;5、内联首屏关键CSS&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;将首屏关键样式内联至页面中，保证最快速度看到带有基本样式的首屏，避免用户端出现较长时间的白屏时间&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;6、内联关键JS代码&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;内联关键代码也是为了让用户第一时间感受到页面已经加载成功，但是内联代码不能将所有代码都内联至HTML中，因为这些代码每次都会伴随HTML下载下来，加大HTML文件的体积，也无法让代码在不同的网页间提供复用的功能&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;7、检查服务端下发的资源是否使用GZIP压缩&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;GZIP对于文本资源（JS，CSS文件）有较高的压缩效率，通常可以减少70%的体积&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;8、避免资源的重定向&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;增大加载时间，用户体验较差&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;9、异步延迟加载第三方非关键代码&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;移动端网络资源有限，为了让这些不重要的代码不影响首屏渲染，可以延迟一小段时间在加载&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;10、合理的使用本地缓存，避免把不必要的数据全部放到COOKIE当中&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;每一次AJAX请求都会将当前域名中的所有COOKIE值传递给服务端&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;11、使用service worker，增加页面的离线体验和页面的加载体验&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;页面发送请求时，会先经过SW的脚本，这样可以让我们通过编程的方式来制定我们需要控制的文件，同时，缓存在service worker中的文件，可以让用户离线访问&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;12、在条件允许的情况下，可以使用HTTP2.0协议&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;HTTP2.0协议可以提升网络链路的复用性，提升资源加载效率&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;html&quot;&gt;二、HTML&lt;/h2&gt;
+
+&lt;p&gt;1、注重标签的语义化，保持用最简洁的标签完成所需的功能&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;标签的语义化提高代码的可维护性，在页面加载CSS失败时也不至于很难看。同时，需要保持标签最小化，无意义的标签可以利用伪类表示&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、CSS放到head中，JS到body尾部，JS,CSS都需要放在head中时，JS放在前面&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1、CSS会阻塞页面的渲染，不阻塞DOM的解析；2、JS会阻塞DOM的解析，但是，浏览器会预先下载资源；3、浏览器在遇到script标签时会触发页面渲染，如果这时CSS尚未加载完成，页面将会等待CSS加载完成后在执行&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、HTML代码压缩，去除注释、空白符&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;减少网络传输的文件大小&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;4、尽量避免使用iframe&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;iframe 内资源的下载进程会阻塞父页面静态资源的下载与 CSS 及 HTML DOM 的解析&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;css&quot;&gt;三、CSS&lt;/h2&gt;
+
+&lt;p&gt;1、压缩CSS代码，排除重复的CSS样式&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;减少网络传输的文件大小&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、根据组件打包CSS文件&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;按需加载，减少网络传输的文件大小&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、避免使用CSS的@import语法&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;可能阻塞页面的加载&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;4、使用Sass、Stylus、Less等预编译语言时，编码CSS嵌套不超过3层&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;提高解析css的效率&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;5、使用autoprefixer给CSS代码自动增加前缀&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;自动帮助我们添加浏览器头，避免意想不到的浏览器兼容性问题&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;6、尽量少使用css通配符，特别是多层嵌套的末尾使用通配符&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;CSS的解析过程是从右往左逆向匹配，使用CSS通配符会增加解析的计算量&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;7、不要滥用高消耗的样式&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;box-shadow、border-radius、filter这些属性绘制前都需要浏览器进行大量的计算&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;四、动画&lt;/h2&gt;
+
+&lt;p&gt;1、简单动画尽量只使用transform、opacity、transition等属性完成&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;width、height、top、left、right、bottom、margin等属性的变更都会触发页面的重排，在移动端环境中频繁的重排会导致动画卡顿&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、较复杂动画可以使用css帧动画&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在移动端兼容性好、性能好、更具有可操控性&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、js动画不要使用setTimeout、setInterval，使用requestAnimationFrame&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;setTimeout和setInterval在动画执行存在性能问题，且无法准确的控制帧数&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;4、对将要使用动画的部分，开启GPU硬件加速（注意不要滥用）&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;对开启GPU硬件加速的标签，浏览器将把他提升到一个单独的图层，并通过GPU进行预处理&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;5、使用will-change属性（注意不要滥用）&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;will-change的作用告诉浏览器哪些属性将要变化，让他可以提前做好准备&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;javascript&quot;&gt;五、JavaScript&lt;/h2&gt;
+
+&lt;p&gt;1、JS代码压缩，代码分模块加载&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;减少代码大小，根据页面需求按需加载资源，最下化用户需要加载的资源大小加快页面展示的速度&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、处理长列表或者大量DOM元素时，不要绑定太多的事件监听函数&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;节省内存和减少监听事件的注册&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、利用throttle和debounce函数去处理频发触发，但是不需要频发执行的函数，例如scroll,touchmove&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;避免频繁的无效的操作，避免页面的卡顿&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;4、利用setTimeout代替setInterval&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;setInterval可能存在指令堆积的问题，导致页面卡顿&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;5、尽量避免大批量的重排重绘&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;页面的重排重绘很耗性能，尤其是重排&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;六、图片&lt;/h2&gt;
+
+&lt;p&gt;1、使用工具压缩图片&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;移动端网络条件有限，图片越大加载时间越长，合理使用工具压缩图片，可以兼顾图片质量和图片大小&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、使用较高压缩比格式的文件webp&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;减少文件传输的大小，避免出现图片尺寸使用不当的问题，小icon用大图&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、使用雪碧图&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;减少http请求数，不过当我们的http协议升级至1.1，2.0之后，雪碧图减少http请求数的效果并不明显&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;4、图片懒加载&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;避免用户提前加载过多无用的资源，浪费用户流量&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;5、根据不同的屏幕像素比加载不同尺寸的图片&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;在较大像素比的屏幕下加载小尺寸的图片，图片会模糊；在较小像素比的屏幕下加载大尺寸的图片，会浪费用户流量和cdn流量&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;6、小于2KB的图片可以尝试使用base64格式去替换&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;将图片转换成base64格式可以减少http请求数量，但是，不能对较大尺寸的图片使用base64格式，因为base64算法会提升三分之一的文件大小&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-3&quot;&gt;七、字体&lt;/h2&gt;
+
+&lt;p&gt;1、压缩字库大小，避免加载过多无用的资源，推荐工具字蛛&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;我们只需要页面需要的字体文件即可，不需要浪费流量加载用户不需要的资源&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、优化字体的展示策略&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;使用font-display属性可以避免在字体加载过程中，不显示文字的问题&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、当特殊文字量较少且内容固定时，可以尝试使用图片代替&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;快速完美的还原界面&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-4&quot;&gt;八、体验&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;对于整个页面资源需求量较大时，可以使用骨架屏或者增加loading效果&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;加强用户体验，加速首屏体验，通过有意义的ui让用户提前得到反馈&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-5&quot;&gt;九、工具&lt;/h2&gt;
+
+&lt;p&gt;1、lighthouse性能跑分&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Google推出的网页性能跑分工具，可以较全面的了解网站的性能&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;2、通过Chrome的控制面板code coverage部分，找到未使用代码的比例&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;帮助我们快速找到首屏未使用的代码&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;3、通过构建工具中使用Scope Hoisting&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;这里以webpack举例，使用Scope Hoisting后打包的文件，文件体积更小，代码运行时创建的函数作用域更少，提升JS的启动速度&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section-6&quot;&gt;参考&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;web-performance-made-easy:&lt;a href=&quot;https://speakerdeck.com/addyosmani/web-performance-made-easy&quot;&gt;https://speakerdeck.com/addyosmani/web-performance-made-easy&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;rail模型讲解:&lt;a href=&quot;https://zhuanlan.zhihu.com/p/20276064&quot;&gt;https://zhuanlan.zhihu.com/p/20276064&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Yahoo性能优化:&lt;a href=&quot;https://developer.yahoo.com/performance/rules.html&quot;&gt;https://developer.yahoo.com/performance/rules.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Google PageSpeed Insights规则:&lt;a href=&quot;https://developers.google.cn/speed/docs/insights/rules&quot;&gt;https://developers.google.cn/speed/docs/insights/rules&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Google IO web性能优化笔记:&lt;a href=&quot;https://medium.com/@afutseng/i-o-18-%E7%AD%86%E8%A8%98-web-performance-made-easy-c10cfd5ef83e&quot;&gt;https://medium.com/@afutseng/i-o-18-%E7%AD%86%E8%A8%98-web-performance-made-easy-c10cfd5ef83e&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;14 Rules for Faster-Loading Web Sites:&lt;a href=&quot;http://stevesouders.com/hpws/rules.php&quot;&gt;http://stevesouders.com/hpws/rules.php&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2018前端性能优化清单:&lt;a href=&quot;https://juejin.im/post/5a966bd16fb9a0635172a50a&quot;&gt;https://juejin.im/post/5a966bd16fb9a0635172a50a&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;2017前端性能优化清单:&lt;a href=&quot;https://github.com/Findow-team/Blog/issues/11&quot;&gt;https://github.com/Findow-team/Blog/issues/11&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;美团感官性能优化:&lt;a href=&quot;https://tech.meituan.com/Optimization_of_front_end_sensory_properties.html&quot;&gt;https://tech.meituan.com/Optimization_of_front_end_sensory_properties.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;前端性能优化相关:&lt;a href=&quot;https://github.com/wy-ei/notebook/issues/34&quot;&gt;https://github.com/wy-ei/notebook/issues/34&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;前端那些事，性能优化:&lt;a href=&quot;https://juejin.im/post/59ff2dbe5188254dd935c8ab&quot;&gt;https://juejin.im/post/59ff2dbe5188254dd935c8ab&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;PWA简介:&lt;a href=&quot;http://sangka-z.com/PWA-Book-CN/ch03/3.2.html&quot;&gt;http://sangka-z.com/PWA-Book-CN/ch03/3.2.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;css性能优化:&lt;a href=&quot;https://segmentfault.com/a/1190000007336987&quot;&gt;https://segmentfault.com/a/1190000007336987&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>SSH</name></author><category term="性能优化" /><summary type="html">移动端网页性能优化CheckList，做完页面之后可以根据这个列表自查一下</summary></entry><entry><title type="html">CSS Animation学习笔记</title><link href="http://localhost:4000/blog/css-animation" rel="alternate" type="text/html" title="CSS Animation学习笔记" /><published>2018-05-18T00:00:00+08:00</published><updated>2018-05-18T00:00:00+08:00</updated><id>http://localhost:4000/blog/css-animation</id><content type="html" xml:base="http://localhost:4000/blog/css-animation">&lt;h2 id=&quot;animation&quot;&gt;简单介绍一下animation&lt;/h2&gt;
 
 &lt;p&gt;先看一段代码&lt;/p&gt;
 
@@ -1645,112 +1957,4 @@
     &lt;li&gt;译文作者:&lt;a href=&quot;https://github.com/shenshaohui1991&quot;&gt;shenshaohui1991&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;译文地址:&lt;a href=&quot;http://ssh.today&quot;&gt;ssh.today&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Translate" /><summary type="html">最近公司开始组织分享会，吓得我赶紧准备准备，于是，我就找找资料终于决定把第一次的题目定为定时器那些事，本文就是在搜索资料中找到的一片有意思的文章，本文将告诉你JS定时器的在浏览器中的工作原理</summary></entry><entry><title type="html">在Windows下开发ReactNative程序</title><link href="http://localhost:4000/blog/code-react-native-in-windows" rel="alternate" type="text/html" title="在Windows下开发ReactNative程序" /><published>2016-12-16T00:00:00+08:00</published><updated>2016-12-16T00:00:00+08:00</updated><id>http://localhost:4000/blog/code-react-native-in-windows</id><content type="html" xml:base="http://localhost:4000/blog/code-react-native-in-windows">&lt;h2 id=&quot;section&quot;&gt;安装依赖&lt;/h2&gt;
-&lt;p&gt;需要的依赖:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;node.js&lt;/li&gt;
-  &lt;li&gt;python2&lt;/li&gt;
-  &lt;li&gt;ReactNative&lt;/li&gt;
-  &lt;li&gt;JDK&lt;/li&gt;
-  &lt;li&gt;Android SDK&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;nodejs--python2&quot;&gt;node.js &amp;amp;&amp;amp; python2&lt;/h3&gt;
-&lt;p&gt;可以通过&lt;a href=&quot;https://chocolatey.org/&quot;&gt;chocolate&lt;/a&gt;来安装node.js和python&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;choco&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nodejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;choco&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;python2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;jdk&quot;&gt;安装JDK&lt;/h3&gt;
-&lt;p&gt;下载一个JDK，直接下一步下一步，安装完成之后，在系统变量中添加&lt;code class=&quot;highlighter-rouge&quot;&gt;JAVA_HOME&lt;/code&gt;，具体步骤可以参考&lt;a href=&quot;http://jingyan.baidu.com/article/6dad5075d1dc40a123e36ea3.html&quot;&gt;安装说明&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;android-sdk&quot;&gt;安装Android SDK&lt;/h3&gt;
-&lt;p&gt;提供一个带AndroidSDK的Android Studio的&lt;a href=&quot;https://dl.google.com/dl/android/studio/install/2.2.2.0/android-studio-bundle-145.3360264-windows.exe&quot;&gt;下载地址&lt;/a&gt;，安装过程也是下一步下一步，需要注意的是你需要下载Android6.0版本&lt;/p&gt;
-
-&lt;h3 id=&quot;reactnative&quot;&gt;初始化ReactNative工程&lt;/h3&gt;
-&lt;p&gt;首先需要下载&lt;code class=&quot;highlighter-rouge&quot;&gt;react-native-cli&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;npm&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;g&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cli&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;初始化过程一般比较久，大概十分钟左右，需要下载很多依赖&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;init&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;reactnative-1&quot;&gt;运行第一个ReactNative程序&lt;/h3&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;react&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;native&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;android&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;可以通过访问&lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:8081/index.android.bundle?platform=android&lt;/code&gt;检查是否启动成功或者直接在手机上查看程序&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;注意&lt;/em&gt;&lt;/strong&gt;:对于小米手机需要做一下操作&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;打开开发者模式&lt;/li&gt;
-  &lt;li&gt;打开USB调试&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;em&gt;关闭MIUI优化&lt;/em&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;em&gt;允许悬浮窗&lt;/em&gt;&lt;/strong&gt;，禁用可能导致出现长时间白屏&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;运行项目可能遇到的BUG：&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;SyntaxError&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Strict&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;does&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;allow&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;declarations&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lexically&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nested&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;statement&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newly&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;created&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;这个问题具体原因可以参考&lt;a href=&quot;https://github.com/facebook/react-native/issues/11389&quot;&gt;Issue&lt;/a&gt;，提供一个简单的修复方法，找到项目目录下&lt;code class=&quot;highlighter-rouge&quot;&gt;\node_modules\react-native\Libraries\Core\InitializeCore.js&lt;/code&gt;的112行修改函数的定义方式，然后执行&lt;code class=&quot;highlighter-rouge&quot;&gt;npm start --reset-cache&lt;/code&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handleError&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isFatal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;hello-world&quot;&gt;Hello World&lt;/h3&gt;
-
-&lt;p&gt;修改&lt;code class=&quot;highlighter-rouge&quot;&gt;index.android.js&lt;/code&gt;文件，ReactNative全面支持ES6的语法，在改的时候完全不需要担心是否支持的问题&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;AppRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react-native'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;View&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Text&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;World&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/Text&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/View&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;StyleSheet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;justifyContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;alignItems&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;backgroundColor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'#F5FCFF'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-  &lt;span class=&quot;na&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;fontSize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;textAlign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'center'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;AppRegistry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ReactNativeDemo'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactNativeDemo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>SSH</name></author><category term="ReactNative" /><summary type="html">本文教你如何在windows上搭建ReactNative环境，步骤很简单，只要网速够快就可以啦。。</summary></entry></feed>
+&lt;/blockquote&gt;</content><author><name>SSH</name></author><category term="Translate" /><summary type="html">最近公司开始组织分享会，吓得我赶紧准备准备，于是，我就找找资料终于决定把第一次的题目定为定时器那些事，本文就是在搜索资料中找到的一片有意思的文章，本文将告诉你JS定时器的在浏览器中的工作原理</summary></entry></feed>
