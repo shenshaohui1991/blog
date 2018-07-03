@@ -1,11 +1,11 @@
 ---
 layout: post
-title: '移动端网页性能优化CheckList'
+title: '移动端网页性能优化自查清单'
 date: 2018-07-02
 author: SSH
 categories: [Javascript]
 tags: [性能优化]
-excerpt: 移动端网页性能优化CheckList，做完页面之后可以根据这个列表自查一下
+excerpt: 移动端网页性能优化自查清单，做完页面之后可以根据这个列表自查一下有没有做到
 ---
 
 ## 一、网络加载
@@ -52,7 +52,7 @@ excerpt: 移动端网页性能优化CheckList，做完页面之后可以根据�
 
 11、使用service worker，增加页面的离线体验和页面的加载体验
 
-> 页面发送请求时，会先经过SW的脚本，这样可以让我们通过编程的方式来制定我们需要控制的文件，同时，缓存在service worker中的文件，可以让用户离线访问
+> 页面发送请求时，会先经过SW的脚本，这样可以让我们通过编程的方式来制定我们需要缓存的文件，同时，缓存在service worker中的文件，可以让用户离线访问
 
 12、在条件允许的情况下，可以使用HTTP2.0协议
 
@@ -190,38 +190,36 @@ excerpt: 移动端网页性能优化CheckList，做完页面之后可以根据�
 
 > 快速完美的还原界面
 
-## 八、体验
+## 八、其他
 
-1. 对于整个页面资源需求量较大时，可以使用骨架屏或者增加loading效果
+1、对于整个页面资源需求量较大时，可以使用骨架屏或者增加loading效果
 
 > 加强用户体验，加速首屏体验，通过有意义的ui让用户提前得到反馈
 
-## 九、工具
-
-1、lighthouse性能跑分
+2、lighthouse性能跑分
 
 > Google推出的网页性能跑分工具，可以较全面的了解网站的性能
 
-2、通过Chrome的控制面板code coverage部分，找到未使用代码的比例
+3、通过Chrome的控制面板code coverage部分，找到未使用代码的比例
 
 > 帮助我们快速找到首屏未使用的代码
 
-3、通过构建工具中使用Scope Hoisting
+4、通过构建工具中使用Scope Hoisting
 
 > 这里以webpack举例，使用Scope Hoisting后打包的文件，文件体积更小，代码运行时创建的函数作用域更少，提升JS的启动速度
 
 ## 参考
 
-+ web-performance-made-easy:[https://speakerdeck.com/addyosmani/web-performance-made-easy](https://speakerdeck.com/addyosmani/web-performance-made-easy)
-+ rail模型讲解:[https://zhuanlan.zhihu.com/p/20276064](https://zhuanlan.zhihu.com/p/20276064)
-+ Yahoo性能优化:[https://developer.yahoo.com/performance/rules.html](https://developer.yahoo.com/performance/rules.html)
-+ Google PageSpeed Insights规则:[https://developers.google.cn/speed/docs/insights/rules](https://developers.google.cn/speed/docs/insights/rules)
-+ Google IO web性能优化笔记:[https://medium.com/@afutseng/i-o-18-%E7%AD%86%E8%A8%98-web-performance-made-easy-c10cfd5ef83e](https://medium.com/@afutseng/i-o-18-%E7%AD%86%E8%A8%98-web-performance-made-easy-c10cfd5ef83e)
-+ 14 Rules for Faster-Loading Web Sites:[http://stevesouders.com/hpws/rules.php](http://stevesouders.com/hpws/rules.php)
-+ 2018前端性能优化清单:[https://juejin.im/post/5a966bd16fb9a0635172a50a](https://juejin.im/post/5a966bd16fb9a0635172a50a)
-+ 2017前端性能优化清单:[https://github.com/Findow-team/Blog/issues/11](https://github.com/Findow-team/Blog/issues/11)
-+ 美团感官性能优化:[https://tech.meituan.com/Optimization_of_front_end_sensory_properties.html](https://tech.meituan.com/Optimization_of_front_end_sensory_properties.html)
-+ 前端性能优化相关:[https://github.com/wy-ei/notebook/issues/34](https://github.com/wy-ei/notebook/issues/34)
-+ 前端那些事，性能优化:[https://juejin.im/post/59ff2dbe5188254dd935c8ab](https://juejin.im/post/59ff2dbe5188254dd935c8ab)
-+ PWA简介:[http://sangka-z.com/PWA-Book-CN/ch03/3.2.html](http://sangka-z.com/PWA-Book-CN/ch03/3.2.html)
-+ css性能优化:[https://segmentfault.com/a/1190000007336987](https://segmentfault.com/a/1190000007336987)
++ [web-performance-made-easy](https://speakerdeck.com/addyosmani/web-performance-made-easy)
++ [rail模型讲解](https://zhuanlan.zhihu.com/p/20276064)
++ [Yahoo性能优化](https://developer.yahoo.com/performance/rules.html)
++ [Google PageSpeed Insights规则](https://developers.google.cn/speed/docs/insights/rules)
++ [Google IO web性能优化笔记](https://medium.com/@afutseng/i-o-18-%E7%AD%86%E8%A8%98-web-performance-made-easy-c10cfd5ef83e)
++ [14 Rules for Faster-Loading Web Sites](http://stevesouders.com/hpws/rules.php)
++ [2018前端性能优化清单](https://juejin.im/post/5a966bd16fb9a0635172a50a)
++ [2017前端性能优化清单](https://github.com/Findow-team/Blog/issues/11)
++ [美团感官性能优化](https://tech.meituan.com/Optimization_of_front_end_sensory_properties.html)
++ [前端性能优化相关](https://github.com/wy-ei/notebook/issues/34)
++ [前端那些事，性能优化](https://juejin.im/post/59ff2dbe5188254dd935c8ab)
++ [PWA简介](http://sangka-z.com/PWA-Book-CN/ch03/3.2.html)
++ [css性能优化](https://segmentfault.com/a/1190000007336987)
